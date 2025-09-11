@@ -1,11 +1,11 @@
 import subprocess
 import os
+import script
 
 PORT = 5432
 BASE_PATH = "/home/praveen-pt7975/Documents/allBuilds"
 
 def check_on_process_on_port(port):
-
     try:
         result = subprocess.run(
             ['lsof','-i',f':{port}'],
@@ -25,16 +25,16 @@ def folder_exist(folder_name):
     path = os.path.join(BASE_PATH,folder_name)
     return os.path.isdir(path)
 
-def run_command(command):
-    try:
-        result = subprocess.run(
-            command,
-            check=True,
-            shell=True
-        )
-        print(f'{command} got executed')
-    except Exception as e:
-        print(f'Error in executing the command : {command} : {e}')
+# def run_command(command):
+#     try:
+#         result = subprocess.run(
+#             command,
+#             check=True,
+#             shell=True
+#         )
+#         print(f'{command} got executed')
+#     except Exception as e:
+#         print(f'Error in executing the command : {command} : {e}')
 
 def run_cd_command(path):
     try:
@@ -73,11 +73,11 @@ if __name__ == "__main__":
     
     full_path = BASE_PATH+'/'+version_name
 
-    run_cd_command(full_path)
-    run_cd_command('bin')
+    script.run_cd_command(full_path)
+    script.run_cd_command('bin')
     
     #starts
-    run_command([f'./pg_ctl -D {BASE_PATH}/{version_name}/pgData -l {BASE_PATH}/{version_name}/pgData/logfile -o "-p {PORT}" start'])
+    script.run_command([f'./pg_ctl -D {BASE_PATH}/{version_name}/pgData -l {BASE_PATH}/{version_name}/pgData/logfile -o "-p {PORT}" start'])
     
     option_ans = int(input('Enter \n1 for custom named DB \nAny Number else for version name to be default\n'))
     db_name = version_name
@@ -88,9 +88,9 @@ if __name__ == "__main__":
     
     # handle if the DB already exist or not, if yes inform
     # else create
-    run_command(f'./psql {db_name}')
+    script.run_command(f'./psql {db_name}')
 
     # Stops
-    run_command([f'./pg_ctl -D {BASE_PATH}/{version_name}/pgData -l {BASE_PATH}/{version_name}/pgData/logfile stop'])
+    script.run_command([f'./pg_ctl -D {BASE_PATH}/{version_name}/pgData -l {BASE_PATH}/{version_name}/pgData/logfile stop'])
 
             
