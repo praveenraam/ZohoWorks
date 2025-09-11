@@ -25,7 +25,6 @@ def folder_exist(folder_name):
     path = os.path.join(BASE_PATH,folder_name)
     return os.path.isdir(path)
 
-
 def run_command(command):
     try:
         result = subprocess.run(
@@ -38,8 +37,6 @@ def run_command(command):
         print(f'Error in executing the command : {command} : {e}')
 
 def run_cd_command(path):
-    # Note: subprocess won't keep the directory change for the next commands.
-    # It's better to handle directory changes within Python using os.chdir()
     try:
         os.chdir(path)
         print(f"Changed directory to {path}")
@@ -92,6 +89,7 @@ if __name__ == "__main__":
     # handle if the DB already exist or not, if yes inform
     # else create
     run_command(f'./psql {db_name}')
+
     # Stops
     run_command([f'./pg_ctl -D {BASE_PATH}/{version_name}/pgData -l {BASE_PATH}/{version_name}/pgData/logfile stop'])
 

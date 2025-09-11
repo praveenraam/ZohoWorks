@@ -87,7 +87,7 @@ def run_configure_command(tag_name):
 
 def run_distclean_command():
     try:
-        result = subprocess.run(
+        subprocess.run(
             ['make','distclean'],
             check=True
         )
@@ -118,8 +118,10 @@ if __name__ == "__main__":
             print("Enter a valid tag name, No Tag found")
 
     if(check_already_exist(input_value)):
-        print("Already exist")
-        print("Run the start file!!")
+        print("Already built exist")
+        print("start.py script is about to start, enter the version there to start the server")
+        run_command(f'python3 start.py')
+        exit()
         ## Change to run yourself
     else:
         print(f"We need build this Tag version : {input_value}")
