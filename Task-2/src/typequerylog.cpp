@@ -100,6 +100,8 @@ static void queryFetcherForDDL(
         elog(LOG,"Query to execute : %s",queryString);
 
         log_file.close();
+
+        if(hook_holder_process_utility != NULL) hook_holder_process_utility(pstmt,queryString,readOnlyTree,context,params,queryEnv,dest,qc);
     }
 
 
