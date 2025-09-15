@@ -1,0 +1,4 @@
+comment = 'A Extension for the purpose of incrementing type of statements ran on DB'
+default_version = '1.0'
+module_pathname = '$libdir/statement_tracker'
+relocatable = false

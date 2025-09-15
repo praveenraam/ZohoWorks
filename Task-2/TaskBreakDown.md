@@ -1,4 +1,4 @@
-### Create an postgres extension that read the queries ran on the DB and differentitate the queries as DDL, DML, DQL
+### Create an postgres extension that read the command ran on the DB and differentitate the queries as DDL, DML, DQL
 
 #### My approach :
 - Set a project extension
@@ -12,5 +12,13 @@
 - Log that into a file
     - Learn about file handling
     - use text file
+
+
+### Create an extension that read the command ran on the DB and differnetiate type of command and increment the count of times it is executed.
+- setup project
+- learn how to execute the sql commands from the extension
+- on the first time of extension run, check for table that we are gng to increment, if not available create // done
+    - describe your schema of the table // done
+- everytime the statement is executed, run the sql for increament the table's row
 
 #### Doubts

@@ -2,6 +2,7 @@ extern "C"{
     #include "postgres.h"
     #include "fmgr.h"
     #include "executor/executor.h"
+    #include "executor/spi.h"
     #include "tcop/utility.h"
     #include "nodes/nodes.h"
     #include "nodes/parsenodes.h"
