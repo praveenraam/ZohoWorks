@@ -7,7 +7,6 @@ extern "C" {
     #include "tcop/utility.h"
     #include "nodes/nodes.h"
     #include "nodes/parsenodes.h"
-    #include "executor/executor.h"
 
     PG_MODULE_MAGIC;
 }
@@ -27,6 +26,7 @@ static void queryFetcherForDDL(
     DestReceiver *dest, QueryCompletion *qc
 );
 static std::string get_first_word(std::string query);
+static void updateDB(std::string typeOf);
 
 extern "C" void _PG_init(void){
 
@@ -50,12 +50,16 @@ static void queryFetcherForDML(QueryDesc* queryDesc){
     std::string query = queryDesc->sourceText;
     std::string first_word = get_first_word(query);
 
+    if(query.find("statement_tracker") != std::string::npos){
+        return;
+    }
+
     std::transform(first_word.begin(), first_word.end(), first_word.begin(),
         [](unsigned char c) { return std::tolower(c); }); 
-
+    
     if(first_word == "select") return;
 
-    // Code for sql to update.
+    updateDB("DML");
 
     if(hook_holder_ExecutorEnd != NULL) hook_holder_ExecutorEnd(queryDesc);
 
@@ -70,8 +74,10 @@ static void queryFetcherForDDL(
 ){
 
     // Code for sql to update
+    updateDB("DDL");
 
     if(hook_holder_process_utility != NULL) hook_holder_process_utility(pstmt,queryString,readOnlyTree,context,params,queryEnv,dest,qc);
+    // standard_ProcessUtility();
 }
 
 
@@ -79,6 +85,30 @@ static std::string get_first_word(std::string query){
     unsigned int position = query.find(' ');
     if(position == std::string::npos) return query;
     return query.substr(0,position);
+}
+
+static void updateDB(std::string typeOf){
+    
+    if(typeOf != "DDL" && typeOf != "DML"){
+        elog(LOG,"Not a valid statement");
+        return;
+    }
+
+    SPI_connect();
+
+    int result;
+    
+    if(typeOf == "DDL"){
+        result = SPI_exec("UPDATE statement_tracker SET no_of_DDL_queries_ran = no_of_DDL_queries_ran+1;",0);
+    }
+    else result = SPI_exec("UPDATE statement_tracker SET no_of_DML_queries_ran = no_of_DML_queries_ran+1;",0);
+
+    if(result != SPI_OK_UPDATE){
+        elog(LOG,"Unsuccessful in updating the value");
+    }
+
+    SPI_finish();
+
 }
 
 extern "C"{
