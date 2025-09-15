@@ -1,0 +1,4 @@
+comment = 'A Extension for the purpose of Logging Statements ran on DB'
+default_version = '1.0'
+module_pathname = '$libdir/typequerylog'
+relocatable = false
