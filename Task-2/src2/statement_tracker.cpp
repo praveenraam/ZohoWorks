@@ -10,7 +10,6 @@ extern "C" {
 
     PG_MODULE_MAGIC;
 }
-
 #include<statement_tracker.h>
 
 extern "C" void _PG_init(void){
@@ -73,7 +72,7 @@ static std::string get_first_word(std::string query){
 }
 
 static void updateDB(std::string typeOf){
-    
+
     if(typeOf != "DDL" && typeOf != "DML"){
         elog(LOG,"Not a valid statement");
         return;
@@ -93,7 +92,6 @@ static void updateDB(std::string typeOf){
     }
 
     SPI_finish();
-
 }
 
 extern "C"{
