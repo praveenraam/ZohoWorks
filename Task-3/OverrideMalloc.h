@@ -5,8 +5,6 @@
 #include <map>
 
 class MemoryManage{
-
-
 private:
     size_t memoryUsedByProgram;
     static MemoryManage* obj;
@@ -18,5 +16,4 @@ public :
     void AddMemory(void* ptr,int size);
     void removeMemory(void* ptr);
     size_t getMemoryUsed();
-
 };
