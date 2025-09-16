@@ -1,42 +1,48 @@
 #include "OverrideMalloc.h"
 
-// Obj returner
 MemoryManage* MemoryManage::getMemoryManageObj(){
-    if(obj == nullptr) obj = new MemoryManage();
+    if(mtx == nullptr) mtx = new std::mutex;
+    mtx->lock();
+        if(obj == nullptr) obj = new MemoryManage();
+    mtx->unlock();
     return obj; 
 }
 
-// Add values to memory
 void MemoryManage::AddMemory(void* ptr,int size){
-    memoryUsedByProgram+=size;
-    mapForSize.insert({ptr,size});
+    mtx->lock();
+        memoryUsedByProgram+=size;
+        mapForSize.insert({ptr,size});
+        std::cout << "At add : " << memoryUsedByProgram << std::endl;
+    mtx->unlock();
 }
 
-// Remove values to memory
 void MemoryManage::removeMemory(void* ptr){
     auto iter = mapForSize.find(ptr);
-    if(iter != mapForSize.end()){
-        memoryUsedByProgram = memoryUsedByProgram - (iter->second);
-        mapForSize.erase(iter);
-    }
-    else std::cout << "ptr in param is not found" << std::endl;
 
+    mtx->lock();
+        if(iter != mapForSize.end()){
+            memoryUsedByProgram = memoryUsedByProgram - (iter->second);
+            mapForSize.erase(iter);
+            std::cout << "At remove : " << memoryUsedByProgram << std::endl;
+        }
+        else std::cout << "ptr in param is not found" << std::endl;
+    mtx->unlock();
 }
 
-// getter for MemoryUsed
 size_t MemoryManage::getMemoryUsed(){
     return memoryUsedByProgram;
 }
 
-// static variable declaration
+MemoryManage::~MemoryManage(){
+    delete mtx;
+    delete obj;
+}
+
+std::mutex* MemoryManage::mtx = nullptr;
 MemoryManage* MemoryManage::obj = nullptr;
 
-// User defined malloc
+
 void* ud_malloc(std::size_t size){
-    
-    std::cout << "We are doing our work and then calling" << std::endl;
-    std::cout << "Size : " << size << std::endl;
-    
     void* address = malloc(size);
 
     if(address == nullptr){
@@ -49,39 +55,33 @@ void* ud_malloc(std::size_t size){
     return address;
 }
 
-// User defined free
-void ud_free(void* ptr){
-    std::cout << "we are doing our work and then calling default function" << std::endl;
-    
+void ud_free(void* ptr){    
+
     MemoryManage* memoryManage = MemoryManage::getMemoryManageObj();
     memoryManage->removeMemory(ptr);
-    
+
     free(ptr);
 }
 
-int main(){
+void create_and_dest_array(){
     int* arr = (int*)ud_malloc(4*sizeof(int));
 
     for(int iter=0;iter<4;iter++){
-        std::cout << arr[iter] << std::endl;
-    }
-
-    for(int iter=0;iter<4;iter++){
         arr[iter] = iter*iter;
+        // std::cout << arr[iter] << std::endl;
     }
+    ud_free(arr);
+}
 
-    for(int iter=0;iter<4;iter++){
-        std::cout << arr[iter] << std::endl;
-    }
+int main(){
+
 
     MemoryManage* memoryManage = MemoryManage::getMemoryManageObj();
-    std::cout << "Used Memory from Memory Manage : " << memoryManage->getMemoryUsed() << std::endl;
+    std::cout << "Used Memory from Memory Manage at begin : " << memoryManage->getMemoryUsed() << std::endl;
 
-    ud_free(arr);
-
-    std::cout << "Used Memory from Memory Manage : " << memoryManage->getMemoryUsed() << std::endl;
-
-    for(int iter=0;iter<4;iter++){
-        std::cout << arr[iter] << std::endl;
-    }
+    std::thread t1(create_and_dest_array);
+    std::thread t2(create_and_dest_array);
+    std::thread t3(create_and_dest_array);
+    
+    t1.join(); t2.join(); t3.join();
 }
