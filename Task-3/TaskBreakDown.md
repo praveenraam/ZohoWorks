@@ -5,3 +5,6 @@
     - Implement with proper structure
     - Try to do with class Obj 
  - On the overriding how can we extract the details about the memory or for statitics
+
+ - Make the code thread safe
+    - Use mutex for doing it.    

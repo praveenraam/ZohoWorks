@@ -1,7 +1,7 @@
 #include "OverrideMalloc.h"
 
 MemoryManage* MemoryManage::getMemoryManageObj(){
-    if(mtx == nullptr) mtx = new std::mutex;
+    // if(mtx == nullptr) mtx = new std::mutex;
     mtx->lock();
         if(obj == nullptr) obj = new MemoryManage();
     mtx->unlock();
@@ -38,7 +38,7 @@ MemoryManage::~MemoryManage(){
     delete obj;
 }
 
-std::mutex* MemoryManage::mtx = nullptr;
+std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing 
 MemoryManage* MemoryManage::obj = nullptr;
 
 
@@ -74,8 +74,6 @@ void create_and_dest_array(){
 }
 
 int main(){
-
-
     MemoryManage* memoryManage = MemoryManage::getMemoryManageObj();
     std::cout << "Used Memory from Memory Manage at begin : " << memoryManage->getMemoryUsed() << std::endl;
 
