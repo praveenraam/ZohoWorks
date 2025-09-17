@@ -13,7 +13,7 @@ void MemoryManage::AddMemory(void* ptr,int size){
         memoryUsedByProgram+=size;
         mapForSize.insert({ptr,size});
         std::cout << "At add : " << memoryUsedByProgram << std::endl;
-    mtx->unlock();
+    mtx->unlock();  
 }
 
 void MemoryManage::removeMemory(void* ptr){
@@ -38,7 +38,7 @@ MemoryManage::~MemoryManage(){
     delete obj;
 }
 
-std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing 
+std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing before the main
 MemoryManage* MemoryManage::obj = nullptr;
 
 
@@ -62,6 +62,7 @@ void ud_free(void* ptr){
 
     free(ptr);
 }
+
 
 void create_and_dest_array(){
     int* arr = (int*)ud_malloc(4*sizeof(int));

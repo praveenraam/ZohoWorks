@@ -14,7 +14,7 @@ private:
     std::map<void*,size_t> mapForSize;
     MemoryManage(): memoryUsedByProgram(0){}
     
-    public :
+public :    
     static MemoryManage* getMemoryManageObj();
     void AddMemory(void* ptr,int size);
     void removeMemory(void* ptr);
