@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <typeinfo>
+#include <any>
 #include "SlabCache.h"
 
 class SlabAllocator{
@@ -12,8 +13,7 @@ class SlabAllocator{
         ~SlabAllocator() = default;
 
         template<typename T> SlabCache<T>& getCache();
-        
-        std::unordered_map<std::string, std::unique_ptr<void>> cacheMap;
+        std::unordered_map<std::string, std::unique_ptr<std::any>> cacheMap;
 
     public :
         static SlabAllocator* getInstance();
