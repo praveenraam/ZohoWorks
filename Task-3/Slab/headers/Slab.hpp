@@ -1,8 +1,26 @@
-#include "headers/Slab.h"
-#include <iostream>
+#pragma once
+#include<iostream>
+#include"./MyClass.hpp"
 
-template<typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
-    memoryArray = new T[slabsize];
+class Slab{
+
+    private:
+        MyClass* memoryArray;
+        bool* freeSlots;
+        size_t slabsize;
+        size_t usedSlots;
+
+    public:
+        explicit Slab(size_t c_slabsize = 10);
+        ~Slab();
+
+        MyClass* allocate(std::string name);
+        void deallocate(MyClass* ptr);
+        bool contains(MyClass* ptr);
+};
+
+Slab::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
+    memoryArray = static_cast<MyClass*>(std::malloc(sizeof(MyClass) * slabsize));
     freeSlots = new bool[slabsize];
     
     for(int iter=0;iter<slabsize;iter++){
@@ -10,26 +28,26 @@ template<typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), use
     }
 }
 
-template<typename T> Slab<T>::~Slab(){
+Slab::~Slab(){
     delete[] memoryArray;
     delete[] freeSlots;
 }
 
-template<typename T> T* Slab<T>::allocate(){
+MyClass* Slab::allocate(std::string name){
     if(usedSlots < slabsize){
         for(int iter=0;iter<slabsize;iter++){
             if(!freeSlots[iter]){
-                freeSlots = true;
+                freeSlots[iter] = true;
                 usedSlots++;
                 std::cout << "Allocated the memory" << std::endl;
-                return new(&memoryArray[iter]) T();;
+                return new(&memoryArray[iter]) MyClass(name);;
             }
         }
     }
     return nullptr;
 }
 
-template<typename T> void Slab<T>::deallocate(T* ptr){
+void Slab::deallocate(MyClass* ptr){
     int index = ptr-memoryArray;
     if(index >= 0 && index < slabsize){
         freeSlots[index] = false;
@@ -40,7 +58,7 @@ template<typename T> void Slab<T>::deallocate(T* ptr){
     else std::cout << "Error in deallocating" << std::endl;
 }
 
-template<typename T> bool Slab<T>::contains(T* ptr){
+bool Slab::contains(MyClass* ptr){
     int index = ptr-memoryArray;
     return index >= 0 && index < slabsize;
 }
