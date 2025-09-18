@@ -1,21 +1,20 @@
 #include<iostream>
 #include "./headers/SlabAllocator.hpp"
+#include "./headers/MyClass.hpp"
+#include "./headers/HerClass.hpp"
 
 int main(){
     SlabAllocator* obj = SlabAllocator::getInstance();
-    std::string name = "M1";
-    HerClass* m1 = obj->allocate(name);
-    name = "M2";
-    HerClass* m2 = obj->allocate(name);
+
+    HerClass* m1 = obj->sa_allocate<HerClass>();
+
+    MyClass* m2 = obj->sa_allocate<MyClass>();
 
     m2->sayHello();
     m1->sayHello();
 
-    name = "M3";
-    obj->deallocate(m1);
+    obj->sa_deallocate<HerClass>(m1);
 
-    HerClass* m3 = obj->allocate(name);
-    m1->sayHello();
-
+    obj->sa_deallocate<MyClass>(m2);
     obj->printMap();
 }

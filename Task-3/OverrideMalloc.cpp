@@ -1,4 +1,5 @@
 #include "OverrideMalloc.h"
+#include "./Slab/headers/SlabAllocator.hpp"
 
 MemoryManage* MemoryManage::getMemoryManageObj(){
     // if(mtx == nullptr) mtx = new std::mutex;

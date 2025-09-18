@@ -16,6 +16,6 @@ public:
     }
     
     void sayHello() {
-        std::cout << "HerClass from class! " << std::endl; 
+        std::cout << "Hello from Herclass! " << std::endl; 
     }
 };

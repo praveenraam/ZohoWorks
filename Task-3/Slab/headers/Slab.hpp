@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-// #include"./MyClass.hpp"
 
 template <typename T>
 class Slab{
@@ -15,13 +14,12 @@ class Slab{
         explicit Slab(size_t c_slabsize = 10);
         ~Slab();
 
-        T* allocate();
-        void deallocate(T* ptr);
+        T* sb_allocate();
+        void sb_deallocate(T* ptr);
         bool contains(T* ptr);
 };
 
-template <typename T>
-Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
+template <typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
     memoryArray = static_cast<T*>(std::malloc(sizeof(T) * slabsize));
     freeSlots = new bool[slabsize];
     
@@ -30,8 +28,7 @@ Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
     }
 }
 
-template <typename T>
-Slab<T>::~Slab(){
+template <typename T> Slab<T>::~Slab(){
     for (size_t iter = 0; iter < slabsize; iter++) {
         if (freeSlots[iter]) {
             // memoryArray[iter]~T();
@@ -42,8 +39,7 @@ Slab<T>::~Slab(){
     delete[] freeSlots;
 }
 
-template <typename T>
-T* Slab<T>::allocate(){
+template <typename T> T* Slab<T>::sb_allocate(){
     if(usedSlots < slabsize){
         for(int iter=0;iter<slabsize;iter++){
             if(!freeSlots[iter]){
@@ -57,12 +53,12 @@ T* Slab<T>::allocate(){
     return nullptr;
 }
 
-template <typename T>
-void Slab<T>::deallocate(T* ptr){
+template <typename T> void Slab<T>::sb_deallocate(T* ptr){
     int index = ptr-memoryArray;
     if(index >= 0 && index < slabsize){
+        ptr->~T(); // What to do here.
+        // delete ptr;
         freeSlots[index] = false;
-        ptr->~T();
         usedSlots--;
         std::cout << "De allocated the memory" << std::endl;
         return;
@@ -70,8 +66,7 @@ void Slab<T>::deallocate(T* ptr){
     else std::cout << "Error in deallocating" << std::endl;
 }
 
-template <typename T>
-bool Slab<T>::contains(T* ptr){
+template <typename T> bool Slab<T>::contains(T* ptr){
     int index = ptr-memoryArray;
     return index >= 0 && index < slabsize;
 }

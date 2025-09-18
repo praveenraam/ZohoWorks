@@ -1,8 +1,6 @@
 #pragma once
 #include<vector>
 #include"Slab.hpp"
-#include "./MyClass.hpp"
-#include "./HerClass.hpp"
 
 template <typename T>
 class SlabCache{
@@ -10,26 +8,26 @@ class SlabCache{
         std::vector<Slab<T>*> vectorOfSlabs;
 
     public:
-        T* sl_allocate();
-        void deallocate(T* ptr);
+        T* sc_allocate();
+        void sc_deallocate(T* ptr);
 };
 
 template <typename T>
-T* SlabCache<T>::sl_allocate(){
+T* SlabCache<T>::sc_allocate(){
     for(Slab<T>* slab : vectorOfSlabs){
-        T* obj = slab->allocate();
+        T* obj = slab->sb_allocate();
         if (obj) return obj;
     }
 
     vectorOfSlabs.push_back(new Slab<T>(10));
-    return vectorOfSlabs.back()->allocate();
+    return vectorOfSlabs.back()->sb_allocate();
 }
 
 template <typename T>
-void SlabCache<T>::deallocate(T* ptr){
+void SlabCache<T>::sc_deallocate(T* ptr){
     for(auto& slab : vectorOfSlabs){
         if(slab->contains(ptr)){
-            slab->deallocate(ptr);
+            slab->sb_deallocate(ptr);
             return;
         }
     }

@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g
 TARGET = executable_file
-SOURCES = main.cpp Slab.cpp SlabAllocator.cpp SlabCache.cpp
+SOURCES = main.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)

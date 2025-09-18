@@ -13,15 +13,16 @@ class SlabAllocator{
         SlabAllocator() = default;
         ~SlabAllocator() = default;
 
-        SlabCache<HerClass>& getCache();
+        template<typename T> SlabCache<T>& getCache();
         std::unordered_map<std::string, void*> cacheMap;
 
     public :
         static SlabAllocator* getInstance();
         void printMap();
 
-        HerClass* allocate(std::string name);
-        void deallocate(HerClass* ptr);
+        template<typename T> T* sa_allocate();
+        
+        template<typename T> void sa_deallocate(T* ptr);
 };
 
 
@@ -39,23 +40,23 @@ inline void SlabAllocator::printMap()
 }
 
 
-HerClass* SlabAllocator::allocate(std::string name){
-    auto& cacheObj = getCache();
-    return cacheObj.sl_allocate(); 
+template<typename T> T* SlabAllocator::sa_allocate(){
+    auto& cacheObj = getCache<T>();
+    return cacheObj.sc_allocate(); 
 }
 
-void SlabAllocator::deallocate(HerClass* ptr){
-    auto& cacheObj = getCache();
-    cacheObj.deallocate(ptr);
+template<typename T> void SlabAllocator::sa_deallocate(T* ptr){
+    auto& cacheObj = getCache<T>();
+    cacheObj.sc_deallocate(ptr);
 }
 
-SlabCache<HerClass>& SlabAllocator::getCache(){
+template<typename T> SlabCache<T>& SlabAllocator::getCache(){
 
-    // std::string typeName = typeid(T).name();
+    std::string typeName = typeid(T).name();
 
-    std::string typeName = "HerClass";
+    // std::string typeName = "HerClass";
     if (cacheMap.find(typeName) == cacheMap.end()){
-        cacheMap[typeName] = new SlabCache<HerClass>();
+        cacheMap[typeName] = new SlabCache<T>();
     }
-    return *static_cast<SlabCache<HerClass>*>(cacheMap[typeName]);
+    return *static_cast<SlabCache<T>*>(cacheMap[typeName]);
 }
