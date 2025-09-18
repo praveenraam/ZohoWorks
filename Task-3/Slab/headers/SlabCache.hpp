@@ -1,27 +1,32 @@
 #pragma once
 #include<vector>
 #include"Slab.hpp"
+#include "./MyClass.hpp"
+#include "./HerClass.hpp"
 
+template <typename T>
 class SlabCache{
     private:
-        std::vector<Slab*> vectorOfSlabs;
+        std::vector<Slab<T>*> vectorOfSlabs;
 
     public:
-        MyClass* sl_allocate(std::string name);
-        void deallocate(MyClass* ptr);
+        T* sl_allocate();
+        void deallocate(T* ptr);
 };
 
-MyClass* SlabCache::sl_allocate(std::string name){
-    for(Slab* slab : vectorOfSlabs){
-        MyClass* obj = slab->allocate(name);
+template <typename T>
+T* SlabCache<T>::sl_allocate(){
+    for(Slab<T>* slab : vectorOfSlabs){
+        T* obj = slab->allocate();
         if (obj) return obj;
     }
 
-    vectorOfSlabs.push_back(new Slab(10));
-    return vectorOfSlabs.back()->allocate(name);
+    vectorOfSlabs.push_back(new Slab<T>(10));
+    return vectorOfSlabs.back()->allocate();
 }
 
-void SlabCache::deallocate(MyClass* ptr){
+template <typename T>
+void SlabCache<T>::deallocate(T* ptr){
     for(auto& slab : vectorOfSlabs){
         if(slab->contains(ptr)){
             slab->deallocate(ptr);

@@ -7,9 +7,8 @@ private:
     std::string name;
 public:
 
-    MyClass(std::string name) { 
+    MyClass() { 
         std::cout << "MyClass created! " << std::endl; 
-        this->name = name;
     }
     
     ~MyClass() { 

@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
-#include"./MyClass.hpp"
+// #include"./MyClass.hpp"
 
+template <typename T>
 class Slab{
 
     private:
-        MyClass* memoryArray;
+        T* memoryArray;
         bool* freeSlots;
         size_t slabsize;
         size_t usedSlots;
@@ -14,13 +15,14 @@ class Slab{
         explicit Slab(size_t c_slabsize = 10);
         ~Slab();
 
-        MyClass* allocate(std::string name);
-        void deallocate(MyClass* ptr);
-        bool contains(MyClass* ptr);
+        T* allocate();
+        void deallocate(T* ptr);
+        bool contains(T* ptr);
 };
 
-Slab::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
-    memoryArray = static_cast<MyClass*>(std::malloc(sizeof(MyClass) * slabsize));
+template <typename T>
+Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
+    memoryArray = static_cast<T*>(std::malloc(sizeof(T) * slabsize));
     freeSlots = new bool[slabsize];
     
     for(int iter=0;iter<slabsize;iter++){
@@ -28,29 +30,39 @@ Slab::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0){
     }
 }
 
-Slab::~Slab(){
+template <typename T>
+Slab<T>::~Slab(){
+    for (size_t iter = 0; iter < slabsize; iter++) {
+        if (freeSlots[iter]) {
+            // memoryArray[iter]~T();
+        }
+    }
+
     delete[] memoryArray;
     delete[] freeSlots;
 }
 
-MyClass* Slab::allocate(std::string name){
+template <typename T>
+T* Slab<T>::allocate(){
     if(usedSlots < slabsize){
         for(int iter=0;iter<slabsize;iter++){
             if(!freeSlots[iter]){
                 freeSlots[iter] = true;
                 usedSlots++;
                 std::cout << "Allocated the memory" << std::endl;
-                return new(&memoryArray[iter]) MyClass(name);;
+                return new(&memoryArray[iter]) T();
             }
         }
     }
     return nullptr;
 }
 
-void Slab::deallocate(MyClass* ptr){
+template <typename T>
+void Slab<T>::deallocate(T* ptr){
     int index = ptr-memoryArray;
     if(index >= 0 && index < slabsize){
         freeSlots[index] = false;
+        ptr->~T();
         usedSlots--;
         std::cout << "De allocated the memory" << std::endl;
         return;
@@ -58,7 +70,8 @@ void Slab::deallocate(MyClass* ptr){
     else std::cout << "Error in deallocating" << std::endl;
 }
 
-bool Slab::contains(MyClass* ptr){
+template <typename T>
+bool Slab<T>::contains(T* ptr){
     int index = ptr-memoryArray;
     return index >= 0 && index < slabsize;
 }
