@@ -32,11 +32,10 @@ class Slab{
 template <typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0), status(StatusOfSlotsAvailable::EMPTY){
     memoryArray = static_cast<T*>(std::malloc(sizeof(T) * slabsize));
     pointer = memoryArray;
+    std::cout << "Creating a new slab " << std::endl;
 }
 
 template <typename T> Slab<T>::~Slab(){
-
-    
 
     std::free(memoryArray);
 }

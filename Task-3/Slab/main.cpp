@@ -16,6 +16,8 @@ int main(){
     MyClass* m8 = obj->sa_allocate<MyClass>();
     MyClass* m9 = obj->sa_allocate<MyClass>();
     MyClass* m10 = obj->sa_allocate<MyClass>();
+    MyClass* m13 = obj->sa_allocate<MyClass>();
+    MyClass* m14 = obj->sa_allocate<MyClass>();
 
     std::cout << "m3 : " << m3 << std::endl;
     obj->sa_deallocate<MyClass>(m3);
