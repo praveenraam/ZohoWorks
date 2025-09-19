@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<stack>
 
 enum class StatusOfSlotsAvailable{
     EMPTY,
@@ -12,8 +13,9 @@ class Slab{
 
     private:
         T* memoryArray;
-        bool* freeSlots;
         StatusOfSlotsAvailable status;
+        std::stack<T*> st;
+        T* pointer;
         size_t slabsize;
         size_t usedSlots;
 
@@ -29,37 +31,41 @@ class Slab{
 
 template <typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0), status(StatusOfSlotsAvailable::EMPTY){
     memoryArray = static_cast<T*>(std::malloc(sizeof(T) * slabsize));
-    freeSlots = new bool[slabsize];
-    
-    for(int iter=0;iter<slabsize;iter++){
-        freeSlots[iter] = false;
-    }
+    pointer = memoryArray;
 }
 
 template <typename T> Slab<T>::~Slab(){
-    for (size_t iter = 0; iter < slabsize; iter++) {
-        if (freeSlots[iter]) {
-            // memoryArray[iter]~T();
-        }
-    }
 
-    delete[] memoryArray;
-    delete[] freeSlots;
+    
+
+    std::free(memoryArray);
 }
 
 template <typename T> T* Slab<T>::sb_allocate(){
-    if(status != StatusOfSlotsAvailable::FULL){
-        for(int iter=0;iter<slabsize;iter++){
-            if(!freeSlots[iter]){
-                freeSlots[iter] = true;
-                usedSlots++;
-                status = StatusOfSlotsAvailable::PARTIAL;
-                if(usedSlots == slabsize) status = StatusOfSlotsAvailable::FULL;
-
-                std::cout << "Allocated the memory" << std::endl;
-                return new(&memoryArray[iter]) T();
+    if(status != StatusOfSlotsAvailable::FULL){ 
+        T* newObj;
+        if(st.empty()){
+            std::cout << "empty\n";
+            if(pointer >= memoryArray+slabsize){
+                return nullptr;
             }
+
+            newObj = new(pointer) T();
+            pointer++;
         }
+        else{
+            std::cout << "Not empty\n";
+            T* addressInStack = st.top();
+            st.pop();
+            newObj = new (addressInStack) T();
+        }
+
+        usedSlots++;
+
+        status = usedSlots == slabsize ? StatusOfSlotsAvailable::FULL : StatusOfSlotsAvailable::PARTIAL;
+
+        std::cout << "Allocated the memory" << std::endl;
+        return newObj;
     }
     return nullptr;
 }
@@ -67,17 +73,17 @@ template <typename T> T* Slab<T>::sb_allocate(){
 template <typename T> void Slab<T>::sb_deallocate(T* ptr){
     int index = ptr-memoryArray;
     if(index >= 0 && index < slabsize){
-        ptr->~T(); // What to do here.
-        // delete ptr;
-        freeSlots[index] = false;
+        ptr->~T(); 
+
+        st.push(ptr);
         usedSlots--;
-        std::cout << "De allocated the memory" << std::endl;
 
-        if(usedSlots == 0) status = StatusOfSlotsAvailable::EMPTY;
+        status = usedSlots == 0 ? StatusOfSlotsAvailable::EMPTY : StatusOfSlotsAvailable::PARTIAL;
 
+        std::cout << "Deallocated the memory successfully" << std::endl;
         return;
     }
-    else std::cout << "Error in deallocating" << std::endl;
+    std::cout << "Error in deallocating" << std::endl;
 }
 
 template <typename T> bool Slab<T>::contains(T* ptr){
@@ -88,3 +94,4 @@ template <typename T> bool Slab<T>::contains(T* ptr){
 template <typename T> StatusOfSlotsAvailable Slab<T>::getStatus() {
     return status;
 }
+
