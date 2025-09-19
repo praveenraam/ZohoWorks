@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include <malloc.h>
+#include <cstdlib>
 #include <stdlib.h>
 #include <map>
 #include <mutex>
@@ -9,8 +9,7 @@
 class MemoryManage{
 private:
     size_t memoryUsedByProgram;
-    static MemoryManage* obj;
-    static std::mutex* mtx;
+    std::mutex mtx;
     std::map<void*,size_t> mapForSize;
     
 public :    
@@ -25,8 +24,6 @@ public :
 
 void* ud_malloc(std::size_t size);
 void ud_free(void* ptr);
-void* ud_malloc(std::size_t size,MemoryManage* manager);
-void ud_free(void* ptr,MemoryManage* manager);
 
 MemoryManage* MemoryManage::getMemoryManageObj() {
     static MemoryManage instance;
@@ -34,41 +31,53 @@ MemoryManage* MemoryManage::getMemoryManageObj() {
 }
 
 void MemoryManage::AddMemory(void* ptr,int size){
-    mtx->lock();
+
+    if(ptr == nullptr || size == 0){
+        return;
+    }
+
+    std::lock_guard<std::mutex> lock(mtx);
         memoryUsedByProgram+=size;
         mapForSize.insert({ptr,size});
         // std::cout << "At add : " << memoryUsedByProgram << std::endl;
-    mtx->unlock();  
 }
 
 void MemoryManage::removeMemory(void* ptr){
-    auto iter = mapForSize.find(ptr);
 
-    mtx->lock();
+    if(ptr == nullptr){
+        return;
+    }
+
+    std::lock_guard<std::mutex> lock(mtx);
+        auto iter = mapForSize.find(ptr);
+
         if(iter != mapForSize.end()){
             memoryUsedByProgram = memoryUsedByProgram - (iter->second);
             mapForSize.erase(iter);
             // std::cout << "At remove : " << memoryUsedByProgram << std::endl;
         }
         else std::cout << "ptr in param is not found" << std::endl;
-    mtx->unlock();
 }
 
 size_t MemoryManage::getMemoryUsed(){
-    return memoryUsedByProgram;
+    std::lock_guard<std::mutex> lock(mtx);
+        return memoryUsedByProgram;
 }
 
 MemoryManage::~MemoryManage(){
-    delete mtx;
-    delete obj;
 }
 
-std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing before the main
-MemoryManage* MemoryManage::obj = nullptr;
+// std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing before the main
+// MemoryManage* MemoryManage::obj = nullptr;
 
 
 void* ud_malloc(std::size_t size){
-    void* address = malloc(size);
+
+    if(size == 0){
+        return nullptr;
+    }
+
+    void* address = std::malloc(size);
 
     if(address == nullptr){
         return nullptr;
@@ -82,8 +91,10 @@ void* ud_malloc(std::size_t size){
 
 void ud_free(void* ptr){    
 
+    if(ptr == nullptr) return;
+
     MemoryManage* memoryManage = MemoryManage::getMemoryManageObj();
     memoryManage->removeMemory(ptr);
 
-    free(ptr);
+    std::free(ptr);
 }
