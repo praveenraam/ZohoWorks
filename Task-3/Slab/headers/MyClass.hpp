@@ -2,7 +2,7 @@
 #include<iostream>
 #include<string>
 
-class MyClass {
+class MyClass { // 32 byte of memory for each object
 private:
     std::string name;
 public:

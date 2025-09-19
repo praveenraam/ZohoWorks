@@ -8,9 +8,11 @@ class SlabCache{
     private:
         std::vector<Slab<T>*> vectorOfSlabs;
         std::stack<Slab<T>*> free_slabs_st;
+        MemoryManage cache_level_memory_manager;
     public:
         T* sc_allocate();
         void sc_deallocate(T* ptr);
+        size_t getCacheLevelMemoryUsage();
 };
 
 template <typename T>
@@ -18,7 +20,7 @@ T* SlabCache<T>::sc_allocate(){
 
     if(free_slabs_st.empty()){
 
-        vectorOfSlabs.push_back(new Slab<T>(10));
+        vectorOfSlabs.push_back(new Slab<T>(10,&cache_level_memory_manager));
         free_slabs_st.push(vectorOfSlabs.back());
     }
 
@@ -41,4 +43,9 @@ void SlabCache<T>::sc_deallocate(T* ptr){
             return;
         }
     }
+}
+
+template <typename T>
+size_t SlabCache<T>::getCacheLevelMemoryUsage() {
+    return cache_level_memory_manager.getMemoryUsed();
 }

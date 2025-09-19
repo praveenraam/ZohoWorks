@@ -2,9 +2,7 @@
 #include<iostream>
 #include<string>
 
-class HerClass {
-private:
-    std::string name;
+class HerClass { // Removed the std::string name for reducing the size of the class -- 1byte of memory for each object
 public:
 
     HerClass() { 

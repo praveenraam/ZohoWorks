@@ -4,6 +4,7 @@
 #include "./headers/HerClass.hpp"
 
 int main(){
+    MemoryManage* main_memory_manager = MemoryManage::getMemoryManageObj();
     SlabAllocator* obj = SlabAllocator::getInstance();
 
     MyClass* m1 = obj->sa_allocate<MyClass>();
@@ -16,19 +17,37 @@ int main(){
     MyClass* m8 = obj->sa_allocate<MyClass>();
     MyClass* m9 = obj->sa_allocate<MyClass>();
     MyClass* m10 = obj->sa_allocate<MyClass>();
-    MyClass* m13 = obj->sa_allocate<MyClass>();
-    MyClass* m14 = obj->sa_allocate<MyClass>();
-
-    std::cout << "m3 : " << m3 << std::endl;
-    obj->sa_deallocate<MyClass>(m3);
-
-    std::cout << "m4 : " << m4 << std::endl;
-    obj->sa_deallocate<MyClass>(m4);
-
     MyClass* m11 = obj->sa_allocate<MyClass>();
     MyClass* m12 = obj->sa_allocate<MyClass>();
 
-    std::cout << "m11 & m12 : " << m11 << " & " << m12 << std::endl;
+    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
 
-    obj->printMap();
+    HerClass* h1 = obj->sa_allocate<HerClass>();
+    HerClass* h2 = obj->sa_allocate<HerClass>();
+
+    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+
+    std::cout << "m5 : " << m5 << std::endl;
+    obj->sa_deallocate<MyClass>(m5);
+
+    std::cout << "m8 : " << m8 << std::endl;
+    obj->sa_deallocate<MyClass>(m8);
+
+    MyClass* m13 = obj->sa_allocate<MyClass>();
+    MyClass* m14 = obj->sa_allocate<MyClass>();
+
+    std::cout << "m13 & m14 : " << m13 << " & " << m14 << std::endl;
+
+    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+
+    obj->sa_deallocate<HerClass>(h1);
+
+    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+    
+    std::cout << sizeof(MyClass) << " " << sizeof(HerClass) << std::endl;
+    std::cout << "MyClass Object occupied space: " << obj->AllocatorGetCacheMemoryUsage<MyClass>() << std::endl;
+
+    std::cout << "HerClass Object occupied space: " <<  obj->AllocatorGetCacheMemoryUsage<HerClass>() << std::endl;
+    std::cout << "Total Memory occupied by Program:" << main_memory_manager->getMemoryUsed() << std::endl;
+
 }

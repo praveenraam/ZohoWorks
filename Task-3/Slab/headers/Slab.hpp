@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<stack>
+#include "./MemoryManager.hpp"
 
 enum class StatusOfSlotsAvailable{
     EMPTY,
@@ -18,9 +19,9 @@ class Slab{
         T* pointer;
         size_t slabsize;
         size_t usedSlots;
-
+        MemoryManage* cache_passed_manager;
     public:
-        explicit Slab(size_t c_slabsize = 10);
+        explicit Slab(size_t c_slabsize, MemoryManage* c_MemoryManager);
         ~Slab();
 
         T* sb_allocate();
@@ -29,22 +30,20 @@ class Slab{
         StatusOfSlotsAvailable getStatus();
 };
 
-template <typename T> Slab<T>::Slab(size_t c_slabsize): slabsize(c_slabsize), usedSlots(0), status(StatusOfSlotsAvailable::EMPTY){
-    memoryArray = static_cast<T*>(std::malloc(sizeof(T) * slabsize));
+template <typename T> Slab<T>::Slab(size_t c_slabsize,MemoryManage* c_MemoryManager): slabsize(c_slabsize), usedSlots(0), status(StatusOfSlotsAvailable::EMPTY), cache_passed_manager(c_MemoryManager){
+    memoryArray = static_cast<T*>(ud_malloc(sizeof(T) * slabsize));
     pointer = memoryArray;
-    std::cout << "Creating a new slab " << std::endl;
 }
 
 template <typename T> Slab<T>::~Slab(){
 
-    std::free(memoryArray);
+    ud_free(memoryArray);
 }
 
 template <typename T> T* Slab<T>::sb_allocate(){
     if(status != StatusOfSlotsAvailable::FULL){ 
         T* newObj;
         if(st.empty()){
-            std::cout << "empty\n";
             if(pointer >= memoryArray+slabsize){
                 return nullptr;
             }
@@ -53,7 +52,6 @@ template <typename T> T* Slab<T>::sb_allocate(){
             pointer++;
         }
         else{
-            std::cout << "Not empty\n";
             T* addressInStack = st.top();
             st.pop();
             newObj = new (addressInStack) T();
@@ -62,6 +60,8 @@ template <typename T> T* Slab<T>::sb_allocate(){
         usedSlots++;
 
         status = usedSlots == slabsize ? StatusOfSlotsAvailable::FULL : StatusOfSlotsAvailable::PARTIAL;
+
+        cache_passed_manager->AddMemory(newObj,sizeof(T));
 
         std::cout << "Allocated the memory" << std::endl;
         return newObj;
@@ -78,6 +78,8 @@ template <typename T> void Slab<T>::sb_deallocate(T* ptr){
         usedSlots--;
 
         status = usedSlots == 0 ? StatusOfSlotsAvailable::EMPTY : StatusOfSlotsAvailable::PARTIAL;
+
+        cache_passed_manager->removeMemory(ptr);
 
         std::cout << "Deallocated the memory successfully" << std::endl;
         return;

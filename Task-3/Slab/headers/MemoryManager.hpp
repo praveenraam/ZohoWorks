@@ -1,19 +1,43 @@
-#include "OverrideMalloc.h"
-#include "./Slab/headers/SlabAllocator.hpp"
+#pragma once
+#include<iostream>
+#include <malloc.h>
+#include <stdlib.h>
+#include <map>
+#include <mutex>
+#include <thread>
 
-MemoryManage* MemoryManage::getMemoryManageObj(){
-    // if(mtx == nullptr) mtx = new std::mutex;
-    mtx->lock();
-        if(obj == nullptr) obj = new MemoryManage();
-    mtx->unlock();
-    return obj; 
+class MemoryManage{
+private:
+    size_t memoryUsedByProgram;
+    static MemoryManage* obj;
+    static std::mutex* mtx;
+    std::map<void*,size_t> mapForSize;
+    
+public :    
+    static MemoryManage* getMemoryManageObj();
+    void AddMemory(void* ptr,int size);
+    void removeMemory(void* ptr);
+    size_t getMemoryUsed();
+
+    MemoryManage(): memoryUsedByProgram(0){}
+    ~MemoryManage();
+};
+
+void* ud_malloc(std::size_t size);
+void ud_free(void* ptr);
+void* ud_malloc(std::size_t size,MemoryManage* manager);
+void ud_free(void* ptr,MemoryManage* manager);
+
+MemoryManage* MemoryManage::getMemoryManageObj() {
+    static MemoryManage instance;
+    return &instance;
 }
 
 void MemoryManage::AddMemory(void* ptr,int size){
     mtx->lock();
         memoryUsedByProgram+=size;
         mapForSize.insert({ptr,size});
-        std::cout << "At add : " << memoryUsedByProgram << std::endl;
+        // std::cout << "At add : " << memoryUsedByProgram << std::endl;
     mtx->unlock();  
 }
 
@@ -24,7 +48,7 @@ void MemoryManage::removeMemory(void* ptr){
         if(iter != mapForSize.end()){
             memoryUsedByProgram = memoryUsedByProgram - (iter->second);
             mapForSize.erase(iter);
-            std::cout << "At remove : " << memoryUsedByProgram << std::endl;
+            // std::cout << "At remove : " << memoryUsedByProgram << std::endl;
         }
         else std::cout << "ptr in param is not found" << std::endl;
     mtx->unlock();
@@ -62,26 +86,4 @@ void ud_free(void* ptr){
     memoryManage->removeMemory(ptr);
 
     free(ptr);
-}
-
-
-void create_and_dest_array(){
-    int* arr = (int*)ud_malloc(4*sizeof(int));
-
-    for(int iter=0;iter<4;iter++){
-        arr[iter] = iter*iter;
-        // std::cout << arr[iter] << std::endl;
-    }
-    ud_free(arr);
-}
-
-int main(){
-    MemoryManage* memoryManage = MemoryManage::getMemoryManageObj();
-    std::cout << "Used Memory from Memory Manage at begin : " << memoryManage->getMemoryUsed() << std::endl;
-
-    std::thread t1(create_and_dest_array);
-    std::thread t2(create_and_dest_array);
-    std::thread t3(create_and_dest_array);
-    
-    t1.join(); t2.join(); t3.join();
 }

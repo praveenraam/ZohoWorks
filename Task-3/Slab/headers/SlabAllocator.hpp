@@ -23,6 +23,7 @@ class SlabAllocator{
         template<typename T> T* sa_allocate();
         
         template<typename T> void sa_deallocate(T* ptr);
+        template<typename T> size_t AllocatorGetCacheMemoryUsage();
 };
 
 
@@ -50,11 +51,17 @@ template<typename T> void SlabAllocator::sa_deallocate(T* ptr){
     cacheObj.sc_deallocate(ptr);
 }
 
+template <typename T>
+inline size_t SlabAllocator::AllocatorGetCacheMemoryUsage()
+{
+    auto& cacheObj = getCache<T>();
+    return cacheObj.getCacheLevelMemoryUsage();
+}
+
 template<typename T> SlabCache<T>& SlabAllocator::getCache(){
 
     std::string typeName = typeid(T).name();
 
-    // std::string typeName = "HerClass";
     if (cacheMap.find(typeName) == cacheMap.end()){
         cacheMap[typeName] = new SlabCache<T>();
     }
