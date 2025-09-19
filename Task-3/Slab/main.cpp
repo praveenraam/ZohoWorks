@@ -1,53 +1,71 @@
-#include<iostream>
+#include <iostream>
 #include "./headers/SlabAllocator.hpp"
 #include "./headers/MyClass.hpp"
 #include "./headers/HerClass.hpp"
 
-int main(){
+// Define new test classes right here in main.cpp
+class HisClass {
+public:
+    int x, y;
+    HisClass() : x(0), y(0) {}
+    void print() { std::cout << "HisClass: (" << x << "," << y << ")\n"; }
+};
+
+class TheirClass {
+public:
+    double d;
+    TheirClass() : d(3.14159) {}
+    void print() { std::cout << "TheirClass: " << d << "\n"; }
+};
+
+int main() {
     MemoryManage* main_memory_manager = MemoryManage::getMemoryManageObj();
     SlabAllocator* obj = SlabAllocator::getInstance();
 
-    MyClass* m1 = obj->sa_allocate<MyClass>();
-    MyClass* m2 = obj->sa_allocate<MyClass>();
-    MyClass* m3 = obj->sa_allocate<MyClass>();
-    MyClass* m4 = obj->sa_allocate<MyClass>();
-    MyClass* m5 = obj->sa_allocate<MyClass>();
-    MyClass* m6 = obj->sa_allocate<MyClass>();
-    MyClass* m7 = obj->sa_allocate<MyClass>();
-    MyClass* m8 = obj->sa_allocate<MyClass>();
-    MyClass* m9 = obj->sa_allocate<MyClass>();
-    MyClass* m10 = obj->sa_allocate<MyClass>();
-    MyClass* m11 = obj->sa_allocate<MyClass>();
-    MyClass* m12 = obj->sa_allocate<MyClass>();
+    std::cout << "\n=== Allocations for MyClass and HerClass ===\n";
+    MyClass* my1 = obj->sa_allocate<MyClass>();
+    HerClass* her1 = obj->sa_allocate<HerClass>();
 
-    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "MyClass ptr: " << my1 << "\n";
+    std::cout << "HerClass ptr: " << her1 << "\n";
 
-    HerClass* h1 = obj->sa_allocate<HerClass>();
-    HerClass* h2 = obj->sa_allocate<HerClass>();
+    std::cout << "\n=== Allocations for HisClass and TheirClass ===\n";
+    HisClass* his1 = obj->sa_allocate<HisClass>();
+    TheirClass* their1 = obj->sa_allocate<TheirClass>();
 
-    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "HisClass ptr: " << his1 << "\n";
+    std::cout << "TheirClass ptr: " << their1 << "\n";
 
-    std::cout << "m5 : " << m5 << std::endl;
-    obj->sa_deallocate<MyClass>(m5);
+    his1->print();
+    their1->print();
 
-    std::cout << "m8 : " << m8 << std::endl;
-    obj->sa_deallocate<MyClass>(m8);
+    std::cout << "\n=== Deallocation and Reallocation Tests ===\n";
+    obj->sa_deallocate<MyClass>(my1);
+    obj->sa_deallocate<HerClass>(her1);
+    obj->sa_deallocate<HisClass>(his1);
+    obj->sa_deallocate<TheirClass>(their1);
 
-    MyClass* m13 = obj->sa_allocate<MyClass>();
-    MyClass* m14 = obj->sa_allocate<MyClass>();
+    MyClass* my2 = obj->sa_allocate<MyClass>();
+    HerClass* her2 = obj->sa_allocate<HerClass>();
+    HisClass* his2 = obj->sa_allocate<HisClass>();
+    TheirClass* their2 = obj->sa_allocate<TheirClass>();
 
-    std::cout << "m13 & m14 : " << m13 << " & " << m14 << std::endl;
+    std::cout << "Reallocated MyClass ptr: " << my2 << "\n";
+    std::cout << "Reallocated HerClass ptr: " << her2 << "\n";
+    std::cout << "Reallocated HisClass ptr: " << his2 << "\n";
+    std::cout << "Reallocated TheirClass ptr: " << their2 << "\n";
 
-    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "\n=== Edge Cases: Double Free and Free Invalid Pointer ===\n";
+    obj->sa_deallocate<MyClass>(my2);
+    obj->sa_deallocate<MyClass>(my2); 
 
-    obj->sa_deallocate<HerClass>(h1);
+    std::cout << "\n=== Memory Usage ===\n";
+    std::cout << "MyClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<MyClass>() << " bytes\n";
+    std::cout << "HerClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<HerClass>() << " bytes\n";
+    std::cout << "HisClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<HisClass>() << " bytes\n";
+    std::cout << "TheirClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<TheirClass>() << " bytes\n";
 
-    std::cout << "-------------------------------------------------------------------------------------------" << std::endl;
-    
-    std::cout << sizeof(MyClass) << " " << sizeof(HerClass) << std::endl;
-    std::cout << "MyClass Object occupied space: " << obj->AllocatorGetCacheMemoryUsage<MyClass>() << std::endl;
+    std::cout << "Total program memory used: " << main_memory_manager->getMemoryUsed() << " bytes\n";
 
-    std::cout << "HerClass Object occupied space: " <<  obj->AllocatorGetCacheMemoryUsage<HerClass>() << std::endl;
-    std::cout << "Total Memory occupied by Program:" << main_memory_manager->getMemoryUsed() << std::endl;
-
+    return 0;
 }
