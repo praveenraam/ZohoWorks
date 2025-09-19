@@ -15,6 +15,7 @@ class SlabCache{
 template <typename T>
 T* SlabCache<T>::sc_allocate(){
     for(Slab<T>* slab : vectorOfSlabs){
+        if(slab->getStatus() == StatusOfSlotsAvailable::FULL) continue;
         T* obj = slab->sb_allocate();
         if (obj) return obj;
     }
