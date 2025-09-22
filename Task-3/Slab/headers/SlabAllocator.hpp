@@ -7,7 +7,7 @@
 #include <iostream>
 #include <any>
 #include "SlabCache.hpp"
-
+// TODO: write destructors for all the classes and handle the memory leak implementing RAII
 class SlabAllocator{
     private:
         SlabAllocator() = default;
