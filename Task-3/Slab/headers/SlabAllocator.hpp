@@ -15,6 +15,7 @@ class SlabAllocator{
 
         template<typename T> SlabCache<T>& getCache();
         std::unordered_map<std::string, void*> cacheMap;
+        std::mutex sa_mutex;
 
     public :
         static SlabAllocator* getInstance();
@@ -35,9 +36,10 @@ SlabAllocator* SlabAllocator::getInstance()
 
 inline void SlabAllocator::printMap()
 {
-    for (const auto& it : cacheMap) {
-        std::cout << "Key: " << it.first << " " << it.second << std::endl;
-    }
+    std::lock_guard<std::mutex> lock(sa_mutex);
+        for (const auto& it : cacheMap) {
+            std::cout << "Key: " << it.first << " " << it.second << std::endl;
+        }
 }
 
 
@@ -62,8 +64,10 @@ template<typename T> SlabCache<T>& SlabAllocator::getCache(){
 
     std::string typeName = typeid(T).name();
 
-    if (cacheMap.find(typeName) == cacheMap.end()){
-        cacheMap[typeName] = new SlabCache<T>();
-    }
-    return *static_cast<SlabCache<T>*>(cacheMap[typeName]);
+    std::lock_guard<std::mutex> lock(sa_mutex);
+
+        if (cacheMap.find(typeName) == cacheMap.end()){
+            cacheMap[typeName] = new SlabCache<T>();
+        }
+        return *static_cast<SlabCache<T>*>(cacheMap[typeName]);
 }

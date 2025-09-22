@@ -67,10 +67,6 @@ size_t MemoryManage::getMemoryUsed(){
 MemoryManage::~MemoryManage(){
 }
 
-// std::mutex* MemoryManage::mtx = new std::mutex(); // Initializing before the main
-// MemoryManage* MemoryManage::obj = nullptr;
-
-
 void* ud_malloc(std::size_t size){
 
     if(size == 0){
