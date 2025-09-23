@@ -6,11 +6,11 @@ class HerClass { // Removed the std::string name for reducing the size of the cl
 public:
 
     HerClass() { 
-        std::cout << "HerClass created! " << std::endl; 
+        // std::cout << "HerClass created! " << std::endl;     
     }
     
     ~HerClass() { 
-        std::cout << "HerClass destroyed!" << std::endl; 
+        // std::cout << "HerClass destroyed!" << std::endl; 
     }
     
     void sayHello() {

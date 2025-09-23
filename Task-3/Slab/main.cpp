@@ -2,6 +2,7 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include <fstream>
 #include "./headers/SlabAllocator.hpp"
 #include "./headers/MyClass.hpp"
 #include "./headers/HerClass.hpp"
@@ -22,7 +23,7 @@ public:
 
 std::mutex mutex_print;
 
-void threadFunction(SlabAllocator* allocatorObj){
+void threadFunction(SlabAllocator* allocatorObj,MemoryManage* memory_manager){
 
     MyClass* my1 = allocatorObj->sa_allocate<MyClass>();
     HerClass* her1 = allocatorObj->sa_allocate<HerClass>();
@@ -31,21 +32,22 @@ void threadFunction(SlabAllocator* allocatorObj){
 
     {
         std::lock_guard<std::mutex> lock(mutex_print);
-            std::cout << "MyClass : " << my1 << std::endl;
-            std::cout << "HerClass : " << her1 << std::endl;
-            std::cout << "HisClass : " << his1 << std::endl;
-            std::cout << "TheirClass : " << their1 << std::endl;
-    }
+        
+            std::ofstream out("output.txt", std::ios::app);
+
+            if(out.is_open()){
+                out << "MyClass : " << my1 << " : Memory used by MyClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<MyClass>() << std::endl;
+                out << "HerClass : " << her1 << " : Memory used by HerClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<HerClass>() << std::endl;
+                out << "HisClass : " << his1 << " : Memory used by HisClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<HisClass>() << std::endl;
+                out << "TheirClass : " << their1 << " : Memory used by TheirClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<TheirClass>() << std::endl;
+                out << "Total Memory used by the Program : " << memory_manager->getMemoryUsed() << " \n" << std::endl;
+            }
+        }
     
     allocatorObj->sa_deallocate<MyClass>(my1);
     allocatorObj->sa_deallocate<HerClass>(her1);
     allocatorObj->sa_deallocate<HisClass>(his1);
     allocatorObj->sa_deallocate<TheirClass>(their1);
-
-    {
-        std::lock_guard<std::mutex> lock(mutex_print);
-            std::cout << "Thread No : " << std::this_thread::get_id() << " completed the execution" << std::endl;
-    }
 
 }
 
@@ -53,13 +55,13 @@ int main(){
 
     MemoryManage* memory_manager = MemoryManage::getMemoryManageObj();
     SlabAllocator* allocatorObj = SlabAllocator::getInstance();
+    std::ofstream("output.txt", std::ios::trunc).close();
     
-    int countOfThreads = 20;
-    int countOfIteration = 4;
+    int countOfThreads = 100;
 
     std::vector<std::thread> threads1;
     for(int iter=0;iter<countOfThreads;iter++){
-        threads1.emplace_back(threadFunction,allocatorObj);
+        threads1.emplace_back(threadFunction,allocatorObj,memory_manager);
     }
 
     for(std::thread& thread_iter : threads1){
@@ -68,10 +70,21 @@ int main(){
 
     std::vector<std::thread> threads2;
     for(int iter=0;iter<countOfThreads/2;iter++){
-        threads2.emplace_back(threadFunction,allocatorObj);
+        threads2.emplace_back(threadFunction,allocatorObj,memory_manager);
     }
 
     for(std::thread& thread_iter : threads2){
         thread_iter.join();
     }
+
+    std::ofstream outputFile("output.txt", std::ios::app);
+    if (outputFile.is_open()) {
+        outputFile << "\n--- Final Summary ---\n";
+        outputFile << "Memory used by MyClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<MyClass>() << std::endl;
+        outputFile << "Memory used by HerClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<HerClass>() << std::endl;
+        outputFile << "Memory used by HisClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<HisClass>() << std::endl;
+        outputFile << "Memory used by TheirClass : " << allocatorObj->AllocatorGetCacheMemoryUsage<TheirClass>() << std::endl;
+        outputFile << "Total Memory used by the Program : " << memory_manager->getMemoryUsed() << " \n" << std::endl;
+    }
+
 }

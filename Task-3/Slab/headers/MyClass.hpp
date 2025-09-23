@@ -8,11 +8,11 @@ private:
 public:
 
     MyClass() { 
-        std::cout << "MyClass created! " << std::endl; 
+        // std::cout << "MyClass created! " << std::endl; 
     }
     
     ~MyClass() { 
-        std::cout << "MyClass destroyed!" << std::endl; 
+        // std::cout << "MyClass destroyed!" << std::endl; 
     }
     
     void sayHello() {

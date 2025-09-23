@@ -1,7 +1,6 @@
 #pragma once
 #include<vector>
 #include<stack>
-#include <unordered_set>
 #include <mutex>
 #include"Slab.hpp"
 
@@ -10,7 +9,6 @@ class SlabCache{
     private:
         std::vector<Slab<T>*> vectorOfSlabs;
         std::stack<Slab<T>*> free_slabs_st;
-        std::unordered_set<Slab<T>*> free_slabs_set;
         MemoryManage cache_level_memory_manager;
         std::mutex cacheMutex;
 
@@ -24,10 +22,8 @@ template <typename T>
 T* SlabCache<T>::sc_allocate(){
     std::lock_guard<std::mutex> lock(cacheMutex);
         if(free_slabs_st.empty()){
-
             vectorOfSlabs.push_back(new Slab<T>(10,&cache_level_memory_manager));
             free_slabs_st.push(vectorOfSlabs.back());
-            free_slabs_set.insert(vectorOfSlabs.back());
         }
 
         Slab<T>* slab = free_slabs_st.top();
@@ -35,7 +31,6 @@ T* SlabCache<T>::sc_allocate(){
 
         if(slab->getStatus() == StatusOfSlotsAvailable::FULL) {
             free_slabs_st.pop();
-            free_slabs_set.erase(slab);
         }
         return obj;
 }
@@ -45,12 +40,13 @@ void SlabCache<T>::sc_deallocate(T* ptr){
     std::lock_guard<std::mutex> lock(cacheMutex);
         for(auto& slab : vectorOfSlabs){
             if(slab->contains(ptr)){
+
+                bool wasFull = (slab->getStatus() == StatusOfSlotsAvailable::FULL);
                 slab->sb_deallocate(ptr);
 
-                if (slab->getStatus() != StatusOfSlotsAvailable::FULL && free_slabs_set.find(slab) == free_slabs_set.end()) {
+                if(wasFull){
                     free_slabs_st.push(slab);
-                    free_slabs_set.insert(slab);
-                }
+                }            
                 return;
             }
         }

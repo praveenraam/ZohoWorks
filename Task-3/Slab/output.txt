@@ -1,0 +1,908 @@
+MyClass : 0x7c80c8001270 : Memory used by MyClass : 96
+HerClass : 0x7c80c8001af0 : Memory used by HerClass : 4
+HisClass : 0x7c80c8002240 : Memory used by HisClass : 32
+TheirClass : 0x7c80c80029d0 : Memory used by TheirClass : 40
+Total Memory used by the Program : 490 
+
+MyClass : 0x7c80c8001290 : Memory used by MyClass : 288
+HerClass : 0x7c80c8001af1 : Memory used by HerClass : 10
+HisClass : 0x7c80c8002248 : Memory used by HisClass : 88
+TheirClass : 0x7c80c80029d8 : Memory used by TheirClass : 88
+Total Memory used by the Program : 980 
+
+MyClass : 0x7c80c80012b0 : Memory used by MyClass : 576
+HerClass : 0x7c80c8001af2 : Memory used by HerClass : 18
+HisClass : 0x7c80c8002250 : Memory used by HisClass : 152
+TheirClass : 0x7c80c80029e0 : Memory used by TheirClass : 152
+Total Memory used by the Program : 980 
+
+MyClass : 0x7c8070000e60 : Memory used by MyClass : 736
+HerClass : 0x7c809c000ff0 : Memory used by HerClass : 23
+HisClass : 0x7c80700016f0 : Memory used by HisClass : 184
+TheirClass : 0x7c8070001af0 : Memory used by TheirClass : 184
+Total Memory used by the Program : 1470 
+
+MyClass : 0x7c80c80012f0 : Memory used by MyClass : 800
+HerClass : 0x7c80c8001af4 : Memory used by HerClass : 26
+HisClass : 0x7c80c8002260 : Memory used by HisClass : 216
+TheirClass : 0x7c80c80029f0 : Memory used by TheirClass : 224
+Total Memory used by the Program : 1470 
+
+MyClass : 0x7c80c8001310 : Memory used by MyClass : 928
+HerClass : 0x7c80c8001af5 : Memory used by HerClass : 30
+HisClass : 0x7c80c8002268 : Memory used by HisClass : 240
+TheirClass : 0x7c80c80029f8 : Memory used by TheirClass : 240
+Total Memory used by the Program : 1470 
+
+MyClass : 0x7c80c8001330 : Memory used by MyClass : 1056
+HerClass : 0x7c80c8001af6 : Memory used by HerClass : 33
+HisClass : 0x7c80c8002270 : Memory used by HisClass : 272
+TheirClass : 0x7c80c8002a00 : Memory used by TheirClass : 272
+Total Memory used by the Program : 1960 
+
+MyClass : 0x7c8038000f00 : Memory used by MyClass : 1152
+HerClass : 0x7c8038001325 : Memory used by HerClass : 36
+HisClass : 0x7c80380016d8 : Memory used by HisClass : 296
+TheirClass : 0x7c8038001aa8 : Memory used by TheirClass : 296
+Total Memory used by the Program : 1960 
+
+MyClass : 0x7c80c8001370 : Memory used by MyClass : 1248
+HerClass : 0x7c80c8001af8 : Memory used by HerClass : 40
+HisClass : 0x7c80c8002280 : Memory used by HisClass : 328
+TheirClass : 0x7c80c8002a10 : Memory used by TheirClass : 328
+Total Memory used by the Program : 2450 
+
+MyClass : 0x7c80c8001270 : Memory used by MyClass : 1408
+HerClass : 0x7c80c8001af0 : Memory used by HerClass : 45
+HisClass : 0x7c80c8002240 : Memory used by HisClass : 360
+TheirClass : 0x7c80c80029d0 : Memory used by TheirClass : 368
+Total Memory used by the Program : 2450 
+
+MyClass : 0x7c80c8001390 : Memory used by MyClass : 1536
+HerClass : 0x7c80c8001af9 : Memory used by HerClass : 49
+HisClass : 0x7c80c8002288 : Memory used by HisClass : 392
+TheirClass : 0x7c80c8002a18 : Memory used by TheirClass : 400
+Total Memory used by the Program : 2450 
+
+MyClass : 0x7c809c000e60 : Memory used by MyClass : 1728
+HerClass : 0x7c80c8001400 : Memory used by HerClass : 54
+HisClass : 0x7c809c0016d0 : Memory used by HisClass : 432
+TheirClass : 0x7c809c001aa0 : Memory used by TheirClass : 440
+Total Memory used by the Program : 2940 
+
+MyClass : 0x7c809c000e80 : Memory used by MyClass : 1888
+HerClass : 0x7c80c8001401 : Memory used by HerClass : 59
+HisClass : 0x7c809c0016d8 : Memory used by HisClass : 480
+TheirClass : 0x7c809c001aa8 : Memory used by TheirClass : 488
+Total Memory used by the Program : 3430 
+
+MyClass : 0x7c809c000ea0 : Memory used by MyClass : 2080
+HerClass : 0x7c80c8001402 : Memory used by HerClass : 65
+HisClass : 0x7c809c0016e0 : Memory used by HisClass : 520
+TheirClass : 0x7c809c001ab0 : Memory used by TheirClass : 528
+Total Memory used by the Program : 3430 
+
+MyClass : 0x7c809c000ec0 : Memory used by MyClass : 2176
+HerClass : 0x7c80c8001403 : Memory used by HerClass : 68
+HisClass : 0x7c809c0016e8 : Memory used by HisClass : 552
+TheirClass : 0x7c809c001ab8 : Memory used by TheirClass : 560
+Total Memory used by the Program : 3750 
+
+MyClass : 0x7c809c000ee0 : Memory used by MyClass : 2336
+HerClass : 0x7c80c8001404 : Memory used by HerClass : 74
+HisClass : 0x7c809c0016f0 : Memory used by HisClass : 592
+TheirClass : 0x7c809c001ac0 : Memory used by TheirClass : 592
+Total Memory used by the Program : 3920 
+
+MyClass : 0x7c809c000f00 : Memory used by MyClass : 2464
+HerClass : 0x7c80c8001405 : Memory used by HerClass : 78
+HisClass : 0x7c809c0016f8 : Memory used by HisClass : 632
+TheirClass : 0x7c809c001ac8 : Memory used by TheirClass : 632
+Total Memory used by the Program : 3920 
+
+MyClass : 0x7c809c000f20 : Memory used by MyClass : 2624
+HerClass : 0x7c80c8001406 : Memory used by HerClass : 83
+HisClass : 0x7c809c001700 : Memory used by HisClass : 664
+TheirClass : 0x7c809c001ad0 : Memory used by TheirClass : 664
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001290 : Memory used by MyClass : 2624
+HerClass : 0x7c80c8001af1 : Memory used by HerClass : 82
+HisClass : 0x7c80c8002248 : Memory used by HisClass : 656
+TheirClass : 0x7c80c80029d8 : Memory used by TheirClass : 656
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000f40 : Memory used by MyClass : 2592
+HerClass : 0x7c80c8001407 : Memory used by HerClass : 81
+HisClass : 0x7c809c001708 : Memory used by HisClass : 648
+TheirClass : 0x7c809c001ad8 : Memory used by TheirClass : 648
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000f60 : Memory used by MyClass : 2560
+HerClass : 0x7c80c8001408 : Memory used by HerClass : 80
+HisClass : 0x7c809c001710 : Memory used by HisClass : 640
+TheirClass : 0x7c809c001ae0 : Memory used by TheirClass : 640
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000f80 : Memory used by MyClass : 2528
+HerClass : 0x7c80c8001409 : Memory used by HerClass : 79
+HisClass : 0x7c809c001718 : Memory used by HisClass : 632
+TheirClass : 0x7c809c001ae8 : Memory used by TheirClass : 632
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c80012d0 : Memory used by MyClass : 2496
+HerClass : 0x7c80c8001af3 : Memory used by HerClass : 78
+HisClass : 0x7c80c8002258 : Memory used by HisClass : 624
+TheirClass : 0x7c80c80029e8 : Memory used by TheirClass : 624
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000e80 : Memory used by MyClass : 2464
+HerClass : 0x7c809c000ff1 : Memory used by HerClass : 77
+HisClass : 0x7c80700016f8 : Memory used by HisClass : 616
+TheirClass : 0x7c8070001af8 : Memory used by TheirClass : 616
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000ea0 : Memory used by MyClass : 2432
+HerClass : 0x7c809c000ff2 : Memory used by HerClass : 76
+HisClass : 0x7c8070001700 : Memory used by HisClass : 608
+TheirClass : 0x7c8070001b00 : Memory used by TheirClass : 608
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000ec0 : Memory used by MyClass : 2400
+HerClass : 0x7c809c000ff3 : Memory used by HerClass : 75
+HisClass : 0x7c8070001708 : Memory used by HisClass : 600
+TheirClass : 0x7c8070001b08 : Memory used by TheirClass : 600
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c80012b0 : Memory used by MyClass : 2368
+HerClass : 0x7c80c8001af2 : Memory used by HerClass : 74
+HisClass : 0x7c80c8002250 : Memory used by HisClass : 592
+TheirClass : 0x7c80c80029e0 : Memory used by TheirClass : 592
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000ee0 : Memory used by MyClass : 2336
+HerClass : 0x7c809c000ff4 : Memory used by HerClass : 73
+HisClass : 0x7c8070001710 : Memory used by HisClass : 584
+TheirClass : 0x7c8070001b10 : Memory used by TheirClass : 584
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000f00 : Memory used by MyClass : 2304
+HerClass : 0x7c809c000ff5 : Memory used by HerClass : 72
+HisClass : 0x7c8070001718 : Memory used by HisClass : 576
+TheirClass : 0x7c8070001b18 : Memory used by TheirClass : 576
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000e60 : Memory used by MyClass : 2272
+HerClass : 0x7c809c000ff0 : Memory used by HerClass : 71
+HisClass : 0x7c80700016f0 : Memory used by HisClass : 568
+TheirClass : 0x7c8070001af0 : Memory used by TheirClass : 568
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000f20 : Memory used by MyClass : 2240
+HerClass : 0x7c809c000ff6 : Memory used by HerClass : 70
+HisClass : 0x7c8070001720 : Memory used by HisClass : 560
+TheirClass : 0x7c8070001b20 : Memory used by TheirClass : 560
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000f40 : Memory used by MyClass : 2208
+HerClass : 0x7c809c000ff7 : Memory used by HerClass : 69
+HisClass : 0x7c8070001728 : Memory used by HisClass : 552
+TheirClass : 0x7c8070001b28 : Memory used by TheirClass : 552
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000f60 : Memory used by MyClass : 2176
+HerClass : 0x7c809c000ff8 : Memory used by HerClass : 68
+HisClass : 0x7c8070001730 : Memory used by HisClass : 544
+TheirClass : 0x7c8070001b30 : Memory used by TheirClass : 544
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c80012f0 : Memory used by MyClass : 2144
+HerClass : 0x7c80c8001af4 : Memory used by HerClass : 67
+HisClass : 0x7c80c8002260 : Memory used by HisClass : 536
+TheirClass : 0x7c80c80029f0 : Memory used by TheirClass : 536
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8070000f80 : Memory used by MyClass : 2112
+HerClass : 0x7c809c000ff9 : Memory used by HerClass : 66
+HisClass : 0x7c8070001738 : Memory used by HisClass : 528
+TheirClass : 0x7c8070001b38 : Memory used by TheirClass : 528
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000e60 : Memory used by MyClass : 2080
+HerClass : 0x7c8038001320 : Memory used by HerClass : 65
+HisClass : 0x7c80380016b0 : Memory used by HisClass : 520
+TheirClass : 0x7c8038001a80 : Memory used by TheirClass : 520
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000e80 : Memory used by MyClass : 2048
+HerClass : 0x7c8038001321 : Memory used by HerClass : 64
+HisClass : 0x7c80380016b8 : Memory used by HisClass : 512
+TheirClass : 0x7c8038001a88 : Memory used by TheirClass : 512
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000ea0 : Memory used by MyClass : 2016
+HerClass : 0x7c8038001322 : Memory used by HerClass : 63
+HisClass : 0x7c80380016c0 : Memory used by HisClass : 504
+TheirClass : 0x7c8038001a90 : Memory used by TheirClass : 504
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001310 : Memory used by MyClass : 1984
+HerClass : 0x7c80c8001af5 : Memory used by HerClass : 62
+HisClass : 0x7c80c8002268 : Memory used by HisClass : 496
+TheirClass : 0x7c80c80029f8 : Memory used by TheirClass : 496
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000ec0 : Memory used by MyClass : 1952
+HerClass : 0x7c8038001323 : Memory used by HerClass : 61
+HisClass : 0x7c80380016c8 : Memory used by HisClass : 488
+TheirClass : 0x7c8038001a98 : Memory used by TheirClass : 488
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000ee0 : Memory used by MyClass : 1920
+HerClass : 0x7c8038001324 : Memory used by HerClass : 60
+HisClass : 0x7c80380016d0 : Memory used by HisClass : 480
+TheirClass : 0x7c8038001aa0 : Memory used by TheirClass : 480
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001350 : Memory used by MyClass : 1888
+HerClass : 0x7c80c8001af7 : Memory used by HerClass : 59
+HisClass : 0x7c80c8002278 : Memory used by HisClass : 472
+TheirClass : 0x7c80c8002a08 : Memory used by TheirClass : 472
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001330 : Memory used by MyClass : 1856
+HerClass : 0x7c80c8001af6 : Memory used by HerClass : 58
+HisClass : 0x7c80c8002270 : Memory used by HisClass : 464
+TheirClass : 0x7c80c8002a00 : Memory used by TheirClass : 464
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f20 : Memory used by MyClass : 1824
+HerClass : 0x7c8038001326 : Memory used by HerClass : 57
+HisClass : 0x7c80380016e0 : Memory used by HisClass : 456
+TheirClass : 0x7c8038001ab0 : Memory used by TheirClass : 456
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f40 : Memory used by MyClass : 1792
+HerClass : 0x7c8038001327 : Memory used by HerClass : 56
+HisClass : 0x7c80380016e8 : Memory used by HisClass : 448
+TheirClass : 0x7c8038001ab8 : Memory used by TheirClass : 448
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f60 : Memory used by MyClass : 1760
+HerClass : 0x7c8038001328 : Memory used by HerClass : 55
+HisClass : 0x7c80380016f0 : Memory used by HisClass : 440
+TheirClass : 0x7c8038001ac0 : Memory used by TheirClass : 440
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f80 : Memory used by MyClass : 1728
+HerClass : 0x7c8038001329 : Memory used by HerClass : 54
+HisClass : 0x7c80380016f8 : Memory used by HisClass : 432
+TheirClass : 0x7c8038001ac8 : Memory used by TheirClass : 432
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f00 : Memory used by MyClass : 1696
+HerClass : 0x7c8038001325 : Memory used by HerClass : 53
+HisClass : 0x7c80380016d8 : Memory used by HisClass : 424
+TheirClass : 0x7c8038001aa8 : Memory used by TheirClass : 424
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000e60 : Memory used by MyClass : 1664
+HerClass : 0x7c8010001370 : Memory used by HerClass : 52
+HisClass : 0x7c8010001750 : Memory used by HisClass : 416
+TheirClass : 0x7c8010001b70 : Memory used by TheirClass : 416
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000e80 : Memory used by MyClass : 1632
+HerClass : 0x7c8010001371 : Memory used by HerClass : 51
+HisClass : 0x7c8010001758 : Memory used by HisClass : 408
+TheirClass : 0x7c8010001b78 : Memory used by TheirClass : 408
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ea0 : Memory used by MyClass : 1600
+HerClass : 0x7c8010001372 : Memory used by HerClass : 50
+HisClass : 0x7c8010001760 : Memory used by HisClass : 400
+TheirClass : 0x7c8010001b80 : Memory used by TheirClass : 400
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001370 : Memory used by MyClass : 1568
+HerClass : 0x7c80c8001af8 : Memory used by HerClass : 49
+HisClass : 0x7c80c8002280 : Memory used by HisClass : 392
+TheirClass : 0x7c80c8002a10 : Memory used by TheirClass : 392
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ec0 : Memory used by MyClass : 1536
+HerClass : 0x7c8010001373 : Memory used by HerClass : 48
+HisClass : 0x7c8010001768 : Memory used by HisClass : 384
+TheirClass : 0x7c8010001b88 : Memory used by TheirClass : 384
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ee0 : Memory used by MyClass : 1504
+HerClass : 0x7c8010001374 : Memory used by HerClass : 47
+HisClass : 0x7c8010001770 : Memory used by HisClass : 376
+TheirClass : 0x7c8010001b90 : Memory used by TheirClass : 376
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f00 : Memory used by MyClass : 1472
+HerClass : 0x7c8010001375 : Memory used by HerClass : 46
+HisClass : 0x7c8010001778 : Memory used by HisClass : 368
+TheirClass : 0x7c8010001b98 : Memory used by TheirClass : 368
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f20 : Memory used by MyClass : 1440
+HerClass : 0x7c8010001376 : Memory used by HerClass : 45
+HisClass : 0x7c8010001780 : Memory used by HisClass : 360
+TheirClass : 0x7c8010001ba0 : Memory used by TheirClass : 360
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f40 : Memory used by MyClass : 1408
+HerClass : 0x7c8010001377 : Memory used by HerClass : 44
+HisClass : 0x7c8010001788 : Memory used by HisClass : 352
+TheirClass : 0x7c8010001ba8 : Memory used by TheirClass : 352
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001270 : Memory used by MyClass : 1376
+HerClass : 0x7c80c8001af0 : Memory used by HerClass : 43
+HisClass : 0x7c80c8002240 : Memory used by HisClass : 344
+TheirClass : 0x7c80c80029d0 : Memory used by TheirClass : 344
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f60 : Memory used by MyClass : 1344
+HerClass : 0x7c8010001378 : Memory used by HerClass : 42
+HisClass : 0x7c8010001790 : Memory used by HisClass : 336
+TheirClass : 0x7c8010001bb0 : Memory used by TheirClass : 336
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f80 : Memory used by MyClass : 1312
+HerClass : 0x7c8010001379 : Memory used by HerClass : 41
+HisClass : 0x7c8010001798 : Memory used by HisClass : 328
+TheirClass : 0x7c8010001bb8 : Memory used by TheirClass : 328
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000e60 : Memory used by MyClass : 1280
+HerClass : 0x7c7fd8001320 : Memory used by HerClass : 40
+HisClass : 0x7c7fd80016b0 : Memory used by HisClass : 320
+TheirClass : 0x7c7fd8001a80 : Memory used by TheirClass : 320
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000e80 : Memory used by MyClass : 1248
+HerClass : 0x7c7fd8001321 : Memory used by HerClass : 39
+HisClass : 0x7c7fd80016b8 : Memory used by HisClass : 312
+TheirClass : 0x7c7fd8001a88 : Memory used by TheirClass : 312
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c80c8001390 : Memory used by MyClass : 1216
+HerClass : 0x7c80c8001af9 : Memory used by HerClass : 38
+HisClass : 0x7c80c8002288 : Memory used by HisClass : 304
+TheirClass : 0x7c80c8002a18 : Memory used by TheirClass : 304
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ea0 : Memory used by MyClass : 1184
+HerClass : 0x7c7fd8001322 : Memory used by HerClass : 37
+HisClass : 0x7c7fd80016c0 : Memory used by HisClass : 296
+TheirClass : 0x7c7fd8001a90 : Memory used by TheirClass : 296
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ec0 : Memory used by MyClass : 1152
+HerClass : 0x7c7fd8001323 : Memory used by HerClass : 36
+HisClass : 0x7c7fd80016c8 : Memory used by HisClass : 288
+TheirClass : 0x7c7fd8001a98 : Memory used by TheirClass : 288
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ee0 : Memory used by MyClass : 1120
+HerClass : 0x7c7fd8001324 : Memory used by HerClass : 35
+HisClass : 0x7c7fd80016d0 : Memory used by HisClass : 280
+TheirClass : 0x7c7fd8001aa0 : Memory used by TheirClass : 280
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f00 : Memory used by MyClass : 1088
+HerClass : 0x7c7fd8001325 : Memory used by HerClass : 34
+HisClass : 0x7c7fd80016d8 : Memory used by HisClass : 272
+TheirClass : 0x7c7fd8001aa8 : Memory used by TheirClass : 272
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f20 : Memory used by MyClass : 1056
+HerClass : 0x7c7fd8001326 : Memory used by HerClass : 33
+HisClass : 0x7c7fd80016e0 : Memory used by HisClass : 264
+TheirClass : 0x7c7fd8001ab0 : Memory used by TheirClass : 264
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f40 : Memory used by MyClass : 1024
+HerClass : 0x7c7fd8001327 : Memory used by HerClass : 32
+HisClass : 0x7c7fd80016e8 : Memory used by HisClass : 256
+TheirClass : 0x7c7fd8001ab8 : Memory used by TheirClass : 256
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000e60 : Memory used by MyClass : 992
+HerClass : 0x7c80c8001400 : Memory used by HerClass : 31
+HisClass : 0x7c809c0016d0 : Memory used by HisClass : 248
+TheirClass : 0x7c809c001aa0 : Memory used by TheirClass : 248
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f60 : Memory used by MyClass : 960
+HerClass : 0x7c7fd8001328 : Memory used by HerClass : 30
+HisClass : 0x7c7fd80016f0 : Memory used by HisClass : 240
+TheirClass : 0x7c7fd8001ac0 : Memory used by TheirClass : 240
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f80 : Memory used by MyClass : 928
+HerClass : 0x7c7fd8001329 : Memory used by HerClass : 29
+HisClass : 0x7c7fd80016f8 : Memory used by HisClass : 232
+TheirClass : 0x7c7fd8001ac8 : Memory used by TheirClass : 232
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000e60 : Memory used by MyClass : 896
+HerClass : 0x7c7fac001320 : Memory used by HerClass : 28
+HisClass : 0x7c7fac0016b0 : Memory used by HisClass : 224
+TheirClass : 0x7c7fac001a80 : Memory used by TheirClass : 224
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000e80 : Memory used by MyClass : 864
+HerClass : 0x7c7fac001321 : Memory used by HerClass : 27
+HisClass : 0x7c7fac0016b8 : Memory used by HisClass : 216
+TheirClass : 0x7c7fac001a88 : Memory used by TheirClass : 216
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ea0 : Memory used by MyClass : 832
+HerClass : 0x7c7fac001322 : Memory used by HerClass : 26
+HisClass : 0x7c7fac0016c0 : Memory used by HisClass : 208
+TheirClass : 0x7c7fac001a90 : Memory used by TheirClass : 208
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ec0 : Memory used by MyClass : 800
+HerClass : 0x7c7fac001323 : Memory used by HerClass : 25
+HisClass : 0x7c7fac0016c8 : Memory used by HisClass : 200
+TheirClass : 0x7c7fac001a98 : Memory used by TheirClass : 200
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000e80 : Memory used by MyClass : 768
+HerClass : 0x7c80c8001401 : Memory used by HerClass : 24
+HisClass : 0x7c809c0016d8 : Memory used by HisClass : 192
+TheirClass : 0x7c809c001aa8 : Memory used by TheirClass : 192
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ee0 : Memory used by MyClass : 736
+HerClass : 0x7c7fac001324 : Memory used by HerClass : 23
+HisClass : 0x7c7fac0016d0 : Memory used by HisClass : 184
+TheirClass : 0x7c7fac001aa0 : Memory used by TheirClass : 184
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f00 : Memory used by MyClass : 704
+HerClass : 0x7c7fac001325 : Memory used by HerClass : 22
+HisClass : 0x7c7fac0016d8 : Memory used by HisClass : 176
+TheirClass : 0x7c7fac001aa8 : Memory used by TheirClass : 176
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f20 : Memory used by MyClass : 672
+HerClass : 0x7c7fac001326 : Memory used by HerClass : 21
+HisClass : 0x7c7fac0016e0 : Memory used by HisClass : 168
+TheirClass : 0x7c7fac001ab0 : Memory used by TheirClass : 168
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000ea0 : Memory used by MyClass : 640
+HerClass : 0x7c80c8001402 : Memory used by HerClass : 20
+HisClass : 0x7c809c0016e0 : Memory used by HisClass : 160
+TheirClass : 0x7c809c001ab0 : Memory used by TheirClass : 160
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f40 : Memory used by MyClass : 608
+HerClass : 0x7c7fac001327 : Memory used by HerClass : 19
+HisClass : 0x7c7fac0016e8 : Memory used by HisClass : 152
+TheirClass : 0x7c7fac001ab8 : Memory used by TheirClass : 152
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f60 : Memory used by MyClass : 576
+HerClass : 0x7c7fac001328 : Memory used by HerClass : 18
+HisClass : 0x7c7fac0016f0 : Memory used by HisClass : 144
+TheirClass : 0x7c7fac001ac0 : Memory used by TheirClass : 144
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f80 : Memory used by MyClass : 544
+HerClass : 0x7c7fac001329 : Memory used by HerClass : 17
+HisClass : 0x7c7fac0016f8 : Memory used by HisClass : 136
+TheirClass : 0x7c7fac001ac8 : Memory used by TheirClass : 136
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000e60 : Memory used by MyClass : 512
+HerClass : 0x7c7f7c001320 : Memory used by HerClass : 16
+HisClass : 0x7c7f7c0016b0 : Memory used by HisClass : 128
+TheirClass : 0x7c7f7c001a80 : Memory used by TheirClass : 128
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000e80 : Memory used by MyClass : 480
+HerClass : 0x7c7f7c001321 : Memory used by HerClass : 15
+HisClass : 0x7c7f7c0016b8 : Memory used by HisClass : 120
+TheirClass : 0x7c7f7c001a88 : Memory used by TheirClass : 120
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ea0 : Memory used by MyClass : 448
+HerClass : 0x7c7f7c001322 : Memory used by HerClass : 14
+HisClass : 0x7c7f7c0016c0 : Memory used by HisClass : 112
+TheirClass : 0x7c7f7c001a90 : Memory used by TheirClass : 112
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000ec0 : Memory used by MyClass : 416
+HerClass : 0x7c80c8001403 : Memory used by HerClass : 13
+HisClass : 0x7c809c0016e8 : Memory used by HisClass : 104
+TheirClass : 0x7c809c001ab8 : Memory used by TheirClass : 104
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ec0 : Memory used by MyClass : 384
+HerClass : 0x7c7f7c001323 : Memory used by HerClass : 12
+HisClass : 0x7c7f7c0016c8 : Memory used by HisClass : 96
+TheirClass : 0x7c7f7c001a98 : Memory used by TheirClass : 96
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ee0 : Memory used by MyClass : 352
+HerClass : 0x7c7f7c001324 : Memory used by HerClass : 11
+HisClass : 0x7c7f7c0016d0 : Memory used by HisClass : 88
+TheirClass : 0x7c7f7c001aa0 : Memory used by TheirClass : 88
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f00 : Memory used by MyClass : 320
+HerClass : 0x7c7f7c001325 : Memory used by HerClass : 10
+HisClass : 0x7c7f7c0016d8 : Memory used by HisClass : 80
+TheirClass : 0x7c7f7c001aa8 : Memory used by TheirClass : 80
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f20 : Memory used by MyClass : 288
+HerClass : 0x7c7f7c001326 : Memory used by HerClass : 9
+HisClass : 0x7c7f7c0016e0 : Memory used by HisClass : 72
+TheirClass : 0x7c7f7c001ab0 : Memory used by TheirClass : 72
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000ee0 : Memory used by MyClass : 256
+HerClass : 0x7c80c8001404 : Memory used by HerClass : 8
+HisClass : 0x7c809c0016f0 : Memory used by HisClass : 64
+TheirClass : 0x7c809c001ac0 : Memory used by TheirClass : 64
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f40 : Memory used by MyClass : 224
+HerClass : 0x7c7f7c001327 : Memory used by HerClass : 7
+HisClass : 0x7c7f7c0016e8 : Memory used by HisClass : 56
+TheirClass : 0x7c7f7c001ab8 : Memory used by TheirClass : 56
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f60 : Memory used by MyClass : 192
+HerClass : 0x7c7f7c001328 : Memory used by HerClass : 6
+HisClass : 0x7c7f7c0016f0 : Memory used by HisClass : 48
+TheirClass : 0x7c7f7c001ac0 : Memory used by TheirClass : 48
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f80 : Memory used by MyClass : 160
+HerClass : 0x7c7f7c001329 : Memory used by HerClass : 5
+HisClass : 0x7c7f7c0016f8 : Memory used by HisClass : 40
+TheirClass : 0x7c7f7c001ac8 : Memory used by TheirClass : 40
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f54000e60 : Memory used by MyClass : 128
+HerClass : 0x7c7f54001360 : Memory used by HerClass : 4
+HisClass : 0x7c7f54001730 : Memory used by HisClass : 32
+TheirClass : 0x7c7f54001b40 : Memory used by TheirClass : 32
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f54000e80 : Memory used by MyClass : 96
+HerClass : 0x7c7f54001361 : Memory used by HerClass : 3
+HisClass : 0x7c7f54001738 : Memory used by HisClass : 24
+TheirClass : 0x7c7f54001b48 : Memory used by TheirClass : 24
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c809c000f00 : Memory used by MyClass : 64
+HerClass : 0x7c80c8001405 : Memory used by HerClass : 2
+HisClass : 0x7c809c0016f8 : Memory used by HisClass : 16
+TheirClass : 0x7c809c001ac8 : Memory used by TheirClass : 16
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f54000ea0 : Memory used by MyClass : 32
+HerClass : 0x7c7f54001362 : Memory used by HerClass : 1
+HisClass : 0x7c7f54001740 : Memory used by HisClass : 8
+TheirClass : 0x7c7f54001b50 : Memory used by TheirClass : 8
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f80 : Memory used by MyClass : 96
+HerClass : 0x7c7f7c001329 : Memory used by HerClass : 4
+HisClass : 0x7c7f7c0016f8 : Memory used by HisClass : 32
+TheirClass : 0x7c7f7c001ac8 : Memory used by TheirClass : 32
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f60 : Memory used by MyClass : 256
+HerClass : 0x7c7f7c001328 : Memory used by HerClass : 9
+HisClass : 0x7c7f7c0016f0 : Memory used by HisClass : 80
+TheirClass : 0x7c7f7c001ac0 : Memory used by TheirClass : 80
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f40 : Memory used by MyClass : 416
+HerClass : 0x7c7fac001327 : Memory used by HerClass : 15
+HisClass : 0x7c7fac0016e8 : Memory used by HisClass : 128
+TheirClass : 0x7c7fac001ab8 : Memory used by TheirClass : 136
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f20 : Memory used by MyClass : 608
+HerClass : 0x7c7f7c001326 : Memory used by HerClass : 20
+HisClass : 0x7c7f7c0016e0 : Memory used by HisClass : 168
+TheirClass : 0x7c7f7c001ab0 : Memory used by TheirClass : 176
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ee0 : Memory used by MyClass : 768
+HerClass : 0x7c7f7c001325 : Memory used by HerClass : 25
+HisClass : 0x7c7f7c0016d8 : Memory used by HisClass : 208
+TheirClass : 0x7c7f7c001aa8 : Memory used by TheirClass : 224
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000e60 : Memory used by MyClass : 960
+HerClass : 0x7c7fd8001320 : Memory used by HerClass : 31
+HisClass : 0x7c7fd80016b0 : Memory used by HisClass : 256
+TheirClass : 0x7c7fd8001a80 : Memory used by TheirClass : 264
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ec0 : Memory used by MyClass : 1152
+HerClass : 0x7c7f7c001323 : Memory used by HerClass : 37
+HisClass : 0x7c7f7c0016c8 : Memory used by HisClass : 296
+TheirClass : 0x7c7f7c001a98 : Memory used by TheirClass : 304
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ea0 : Memory used by MyClass : 1280
+HerClass : 0x7c7f7c001322 : Memory used by HerClass : 41
+HisClass : 0x7c7f7c0016c0 : Memory used by HisClass : 336
+TheirClass : 0x7c7f7c001a90 : Memory used by TheirClass : 344
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f80 : Memory used by MyClass : 1344
+HerClass : 0x7c7f7c001329 : Memory used by HerClass : 42
+HisClass : 0x7c7f7c0016f8 : Memory used by HisClass : 336
+TheirClass : 0x7c7f7c001ac8 : Memory used by TheirClass : 336
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000e80 : Memory used by MyClass : 1312
+HerClass : 0x7c7f7c001321 : Memory used by HerClass : 41
+HisClass : 0x7c7f7c0016b8 : Memory used by HisClass : 328
+TheirClass : 0x7c7f7c001a88 : Memory used by TheirClass : 328
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000e60 : Memory used by MyClass : 1280
+HerClass : 0x7c7f7c001320 : Memory used by HerClass : 40
+HisClass : 0x7c7f7c0016b0 : Memory used by HisClass : 320
+TheirClass : 0x7c7f7c001a80 : Memory used by TheirClass : 320
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f80 : Memory used by MyClass : 1248
+HerClass : 0x7c7fac001329 : Memory used by HerClass : 39
+HisClass : 0x7c7fac0016f8 : Memory used by HisClass : 312
+TheirClass : 0x7c7fac001ac8 : Memory used by TheirClass : 312
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f60 : Memory used by MyClass : 1216
+HerClass : 0x7c7fac001328 : Memory used by HerClass : 38
+HisClass : 0x7c7fac0016f0 : Memory used by HisClass : 304
+TheirClass : 0x7c7fac001ac0 : Memory used by TheirClass : 304
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f40 : Memory used by MyClass : 1184
+HerClass : 0x7c7f7c001327 : Memory used by HerClass : 37
+HisClass : 0x7c7f7c0016e8 : Memory used by HisClass : 296
+TheirClass : 0x7c7f7c001ab8 : Memory used by TheirClass : 296
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f60 : Memory used by MyClass : 1152
+HerClass : 0x7c7f7c001328 : Memory used by HerClass : 36
+HisClass : 0x7c7f7c0016f0 : Memory used by HisClass : 288
+TheirClass : 0x7c7f7c001ac0 : Memory used by TheirClass : 288
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f20 : Memory used by MyClass : 1120
+HerClass : 0x7c7fac001326 : Memory used by HerClass : 35
+HisClass : 0x7c7fac0016e0 : Memory used by HisClass : 280
+TheirClass : 0x7c7fac001ab0 : Memory used by TheirClass : 280
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f00 : Memory used by MyClass : 1088
+HerClass : 0x7c7fac001325 : Memory used by HerClass : 34
+HisClass : 0x7c7fac0016d8 : Memory used by HisClass : 272
+TheirClass : 0x7c7fac001aa8 : Memory used by TheirClass : 272
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ee0 : Memory used by MyClass : 1056
+HerClass : 0x7c7fac001324 : Memory used by HerClass : 33
+HisClass : 0x7c7fac0016d0 : Memory used by HisClass : 264
+TheirClass : 0x7c7fac001aa0 : Memory used by TheirClass : 264
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ec0 : Memory used by MyClass : 1024
+HerClass : 0x7c7fac001323 : Memory used by HerClass : 32
+HisClass : 0x7c7fac0016c8 : Memory used by HisClass : 256
+TheirClass : 0x7c7fac001a98 : Memory used by TheirClass : 256
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000f40 : Memory used by MyClass : 992
+HerClass : 0x7c7fac001327 : Memory used by HerClass : 31
+HisClass : 0x7c7fac0016e8 : Memory used by HisClass : 248
+TheirClass : 0x7c7fac001ab8 : Memory used by TheirClass : 248
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000ea0 : Memory used by MyClass : 960
+HerClass : 0x7c7fac001322 : Memory used by HerClass : 30
+HisClass : 0x7c7fac0016c0 : Memory used by HisClass : 240
+TheirClass : 0x7c7fac001a90 : Memory used by TheirClass : 240
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000e80 : Memory used by MyClass : 928
+HerClass : 0x7c7fac001321 : Memory used by HerClass : 29
+HisClass : 0x7c7fac0016b8 : Memory used by HisClass : 232
+TheirClass : 0x7c7fac001a88 : Memory used by TheirClass : 232
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fac000e60 : Memory used by MyClass : 896
+HerClass : 0x7c7fac001320 : Memory used by HerClass : 28
+HisClass : 0x7c7fac0016b0 : Memory used by HisClass : 224
+TheirClass : 0x7c7fac001a80 : Memory used by TheirClass : 224
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f80 : Memory used by MyClass : 864
+HerClass : 0x7c7fd8001329 : Memory used by HerClass : 27
+HisClass : 0x7c7fd80016f8 : Memory used by HisClass : 216
+TheirClass : 0x7c7fd8001ac8 : Memory used by TheirClass : 216
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f60 : Memory used by MyClass : 832
+HerClass : 0x7c7fd8001328 : Memory used by HerClass : 26
+HisClass : 0x7c7fd80016f0 : Memory used by HisClass : 208
+TheirClass : 0x7c7fd8001ac0 : Memory used by TheirClass : 208
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f40 : Memory used by MyClass : 800
+HerClass : 0x7c7fd8001327 : Memory used by HerClass : 25
+HisClass : 0x7c7fd80016e8 : Memory used by HisClass : 200
+TheirClass : 0x7c7fd8001ab8 : Memory used by TheirClass : 200
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f20 : Memory used by MyClass : 768
+HerClass : 0x7c7fd8001326 : Memory used by HerClass : 24
+HisClass : 0x7c7fd80016e0 : Memory used by HisClass : 192
+TheirClass : 0x7c7fd8001ab0 : Memory used by TheirClass : 192
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f20 : Memory used by MyClass : 736
+HerClass : 0x7c7f7c001326 : Memory used by HerClass : 23
+HisClass : 0x7c7f7c0016e0 : Memory used by HisClass : 184
+TheirClass : 0x7c7f7c001ab0 : Memory used by TheirClass : 184
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000f00 : Memory used by MyClass : 704
+HerClass : 0x7c7fd8001325 : Memory used by HerClass : 22
+HisClass : 0x7c7fd80016d8 : Memory used by HisClass : 176
+TheirClass : 0x7c7fd8001aa8 : Memory used by TheirClass : 176
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ee0 : Memory used by MyClass : 672
+HerClass : 0x7c7fd8001324 : Memory used by HerClass : 21
+HisClass : 0x7c7fd80016d0 : Memory used by HisClass : 168
+TheirClass : 0x7c7fd8001aa0 : Memory used by TheirClass : 168
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ec0 : Memory used by MyClass : 640
+HerClass : 0x7c7fd8001323 : Memory used by HerClass : 20
+HisClass : 0x7c7fd80016c8 : Memory used by HisClass : 160
+TheirClass : 0x7c7fd8001a98 : Memory used by TheirClass : 160
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000ea0 : Memory used by MyClass : 608
+HerClass : 0x7c7fd8001322 : Memory used by HerClass : 19
+HisClass : 0x7c7fd80016c0 : Memory used by HisClass : 152
+TheirClass : 0x7c7fd8001a90 : Memory used by TheirClass : 152
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000e80 : Memory used by MyClass : 576
+HerClass : 0x7c7fd8001321 : Memory used by HerClass : 18
+HisClass : 0x7c7fd80016b8 : Memory used by HisClass : 144
+TheirClass : 0x7c7fd8001a88 : Memory used by TheirClass : 144
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000f00 : Memory used by MyClass : 544
+HerClass : 0x7c7f7c001324 : Memory used by HerClass : 17
+HisClass : 0x7c7f7c0016d0 : Memory used by HisClass : 136
+TheirClass : 0x7c7f7c001aa0 : Memory used by TheirClass : 136
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ee0 : Memory used by MyClass : 512
+HerClass : 0x7c7f7c001325 : Memory used by HerClass : 16
+HisClass : 0x7c7f7c0016d8 : Memory used by HisClass : 128
+TheirClass : 0x7c7f7c001aa8 : Memory used by TheirClass : 128
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f80 : Memory used by MyClass : 480
+HerClass : 0x7c8010001379 : Memory used by HerClass : 15
+HisClass : 0x7c8010001798 : Memory used by HisClass : 120
+TheirClass : 0x7c8010001bb8 : Memory used by TheirClass : 120
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f60 : Memory used by MyClass : 448
+HerClass : 0x7c8010001378 : Memory used by HerClass : 14
+HisClass : 0x7c8010001790 : Memory used by HisClass : 112
+TheirClass : 0x7c8010001bb0 : Memory used by TheirClass : 112
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f40 : Memory used by MyClass : 416
+HerClass : 0x7c8010001377 : Memory used by HerClass : 13
+HisClass : 0x7c8010001788 : Memory used by HisClass : 104
+TheirClass : 0x7c8010001ba8 : Memory used by TheirClass : 104
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f20 : Memory used by MyClass : 384
+HerClass : 0x7c8010001376 : Memory used by HerClass : 12
+HisClass : 0x7c8010001780 : Memory used by HisClass : 96
+TheirClass : 0x7c8010001ba0 : Memory used by TheirClass : 96
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000f00 : Memory used by MyClass : 352
+HerClass : 0x7c8010001375 : Memory used by HerClass : 11
+HisClass : 0x7c8010001778 : Memory used by HisClass : 88
+TheirClass : 0x7c8010001b98 : Memory used by TheirClass : 88
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7fd8000e60 : Memory used by MyClass : 320
+HerClass : 0x7c7fd8001320 : Memory used by HerClass : 10
+HisClass : 0x7c7fd80016b0 : Memory used by HisClass : 80
+TheirClass : 0x7c7fd8001a80 : Memory used by TheirClass : 80
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ee0 : Memory used by MyClass : 288
+HerClass : 0x7c8010001374 : Memory used by HerClass : 9
+HisClass : 0x7c8010001770 : Memory used by HisClass : 72
+TheirClass : 0x7c8010001b90 : Memory used by TheirClass : 72
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ec0 : Memory used by MyClass : 256
+HerClass : 0x7c8010001373 : Memory used by HerClass : 8
+HisClass : 0x7c8010001768 : Memory used by HisClass : 64
+TheirClass : 0x7c8010001b88 : Memory used by TheirClass : 64
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000ea0 : Memory used by MyClass : 224
+HerClass : 0x7c8010001372 : Memory used by HerClass : 7
+HisClass : 0x7c8010001760 : Memory used by HisClass : 56
+TheirClass : 0x7c8010001b80 : Memory used by TheirClass : 56
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000e80 : Memory used by MyClass : 192
+HerClass : 0x7c8010001371 : Memory used by HerClass : 6
+HisClass : 0x7c8010001758 : Memory used by HisClass : 48
+TheirClass : 0x7c8010001b78 : Memory used by TheirClass : 48
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c7f7c000ec0 : Memory used by MyClass : 160
+HerClass : 0x7c7f7c001323 : Memory used by HerClass : 5
+HisClass : 0x7c7f7c0016c8 : Memory used by HisClass : 40
+TheirClass : 0x7c7f7c001a98 : Memory used by TheirClass : 40
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8010000e60 : Memory used by MyClass : 128
+HerClass : 0x7c8010001370 : Memory used by HerClass : 4
+HisClass : 0x7c8010001750 : Memory used by HisClass : 32
+TheirClass : 0x7c8010001b70 : Memory used by TheirClass : 32
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f00 : Memory used by MyClass : 96
+HerClass : 0x7c8038001325 : Memory used by HerClass : 3
+HisClass : 0x7c80380016d8 : Memory used by HisClass : 24
+TheirClass : 0x7c8038001aa8 : Memory used by TheirClass : 24
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f80 : Memory used by MyClass : 64
+HerClass : 0x7c8038001329 : Memory used by HerClass : 2
+HisClass : 0x7c80380016f8 : Memory used by HisClass : 16
+TheirClass : 0x7c8038001ac8 : Memory used by TheirClass : 16
+Total Memory used by the Program : 4410 
+
+MyClass : 0x7c8038000f60 : Memory used by MyClass : 32
+HerClass : 0x7c8038001328 : Memory used by HerClass : 1
+HisClass : 0x7c80380016f0 : Memory used by HisClass : 8
+TheirClass : 0x7c8038001ac0 : Memory used by TheirClass : 8
+Total Memory used by the Program : 4410 
+
+
+--- Final Summary ---
+Memory used by MyClass : 0
+Memory used by HerClass : 0
+Memory used by HisClass : 0
+Memory used by TheirClass : 0
+Total Memory used by the Program : 4410 
+
