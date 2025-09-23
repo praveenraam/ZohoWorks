@@ -63,7 +63,7 @@ template <typename T> T* Slab<T>::sb_allocate(){
 
         cache_passed_manager->AddMemory(newObj,sizeof(T));
 
-        std::cout << "Allocated the memory" << std::endl;
+        // std::cout << "Allocated the memory" << std::endl;
         return newObj;
     }
     return nullptr;
@@ -81,7 +81,7 @@ template <typename T> void Slab<T>::sb_deallocate(T* ptr){
 
         cache_passed_manager->removeMemory(ptr);
 
-        std::cout << "Deallocated the memory successfully" << std::endl;
+        // std::cout << "Deallocated the memory successfully" << std::endl;
         return;
     }
     std::cout << "Error in deallocating" << std::endl;

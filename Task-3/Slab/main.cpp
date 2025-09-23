@@ -1,9 +1,11 @@
 #include <iostream>
+#include <thread>
+#include <vector>
+#include <mutex>
 #include "./headers/SlabAllocator.hpp"
 #include "./headers/MyClass.hpp"
 #include "./headers/HerClass.hpp"
 
-// Define new test classes right here in main.cpp
 class HisClass {
 public:
     int x, y;
@@ -18,54 +20,58 @@ public:
     void print() { std::cout << "TheirClass: " << d << "\n"; }
 };
 
-int main() {
-    MemoryManage* main_memory_manager = MemoryManage::getMemoryManageObj();
-    SlabAllocator* obj = SlabAllocator::getInstance();
+std::mutex mutex_print;
 
-    std::cout << "\n=== Allocations for MyClass and HerClass ===\n";
-    MyClass* my1 = obj->sa_allocate<MyClass>();
-    HerClass* her1 = obj->sa_allocate<HerClass>();
+void threadFunction(SlabAllocator* allocatorObj){
 
-    std::cout << "MyClass ptr: " << my1 << "\n";
-    std::cout << "HerClass ptr: " << her1 << "\n";
+    MyClass* my1 = allocatorObj->sa_allocate<MyClass>();
+    HerClass* her1 = allocatorObj->sa_allocate<HerClass>();
+    HisClass* his1 = allocatorObj->sa_allocate<HisClass>();
+    TheirClass* their1 = allocatorObj->sa_allocate<TheirClass>();
 
-    std::cout << "\n=== Allocations for HisClass and TheirClass ===\n";
-    HisClass* his1 = obj->sa_allocate<HisClass>();
-    TheirClass* their1 = obj->sa_allocate<TheirClass>();
+    {
+        std::lock_guard<std::mutex> lock(mutex_print);
+            std::cout << "MyClass : " << my1 << std::endl;
+            std::cout << "HerClass : " << her1 << std::endl;
+            std::cout << "HisClass : " << his1 << std::endl;
+            std::cout << "TheirClass : " << their1 << std::endl;
+    }
+    
+    allocatorObj->sa_deallocate<MyClass>(my1);
+    allocatorObj->sa_deallocate<HerClass>(her1);
+    allocatorObj->sa_deallocate<HisClass>(his1);
+    allocatorObj->sa_deallocate<TheirClass>(their1);
 
-    std::cout << "HisClass ptr: " << his1 << "\n";
-    std::cout << "TheirClass ptr: " << their1 << "\n";
+    {
+        std::lock_guard<std::mutex> lock(mutex_print);
+            std::cout << "Thread No : " << std::this_thread::get_id() << " completed the execution" << std::endl;
+    }
 
-    his1->print();
-    their1->print();
+}
 
-    std::cout << "\n=== Deallocation and Reallocation Tests ===\n";
-    obj->sa_deallocate<MyClass>(my1);
-    obj->sa_deallocate<HerClass>(her1);
-    obj->sa_deallocate<HisClass>(his1);
-    obj->sa_deallocate<TheirClass>(their1);
+int main(){
 
-    MyClass* my2 = obj->sa_allocate<MyClass>();
-    HerClass* her2 = obj->sa_allocate<HerClass>();
-    HisClass* his2 = obj->sa_allocate<HisClass>();
-    TheirClass* their2 = obj->sa_allocate<TheirClass>();
+    MemoryManage* memory_manager = MemoryManage::getMemoryManageObj();
+    SlabAllocator* allocatorObj = SlabAllocator::getInstance();
+    
+    int countOfThreads = 20;
+    int countOfIteration = 4;
 
-    std::cout << "Reallocated MyClass ptr: " << my2 << "\n";
-    std::cout << "Reallocated HerClass ptr: " << her2 << "\n";
-    std::cout << "Reallocated HisClass ptr: " << his2 << "\n";
-    std::cout << "Reallocated TheirClass ptr: " << their2 << "\n";
+    std::vector<std::thread> threads1;
+    for(int iter=0;iter<countOfThreads;iter++){
+        threads1.emplace_back(threadFunction,allocatorObj);
+    }
 
-    std::cout << "\n=== Edge Cases: Double Free and Free Invalid Pointer ===\n";
-    obj->sa_deallocate<MyClass>(my2);
-    obj->sa_deallocate<MyClass>(my2); 
+    for(std::thread& thread_iter : threads1){
+        thread_iter.join();
+    }
 
-    std::cout << "\n=== Memory Usage ===\n";
-    std::cout << "MyClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<MyClass>() << " bytes\n";
-    std::cout << "HerClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<HerClass>() << " bytes\n";
-    std::cout << "HisClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<HisClass>() << " bytes\n";
-    std::cout << "TheirClass memory usage: " << obj->AllocatorGetCacheMemoryUsage<TheirClass>() << " bytes\n";
+    std::vector<std::thread> threads2;
+    for(int iter=0;iter<countOfThreads/2;iter++){
+        threads2.emplace_back(threadFunction,allocatorObj);
+    }
 
-    std::cout << "Total program memory used: " << main_memory_manager->getMemoryUsed() << " bytes\n";
-
-    return 0;
+    for(std::thread& thread_iter : threads2){
+        thread_iter.join();
+    }
 }
