@@ -64,7 +64,7 @@ void* SlabAllocater(Slab* slab){
 }
 
 void SlabDeallocater(Slab* slab, void* ptr){
-    size_t fromMemory = (char*)ptr - (char*)slab->MemoryArray;
+    int fromMemory = (char*)ptr - (char*)slab->MemoryArray;
 
     if(fromMemory >= 0 && fromMemory < slab->totalMemorySizeOfArray){
 
@@ -88,7 +88,8 @@ void SlabDeallocater(Slab* slab, void* ptr){
 }
 
 bool SlabContains(Slab* slab, void* ptr){
-    return true;
+    int fromMemory = (char*)ptr - (char*)slab->MemoryArray;
+    return fromMemory >= 0 && fromMemory < slab->totalMemorySizeOfArray;
 }
 
 enum StatusOfSlotsAvailable getStatus(Slab* slab){
