@@ -1,5 +1,6 @@
 #pragma once
 #include <stdlib.h>
+#include <stdbool.h>
 
 enum StatusOfSlotsAvailable{
     EMPTY,
@@ -23,5 +24,9 @@ typedef struct {
 
 } Slab;
 
-Slab* SlabCreate(size_t c_object_size ,size_t c_memoryArraySize);
+Slab* Slab_inint(size_t c_object_size ,size_t c_memoryArraySize);
 void SlabDestroy(Slab* slab);
+void* SlabAllocater(Slab* slab);
+void SlabDeallocater(Slab* slab, void* ptr);
+bool SlabContains(Slab* slab, void* ptr);
+enum StatusOfSlotsAvailable getStatus(Slab* slab);

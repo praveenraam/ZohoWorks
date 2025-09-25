@@ -55,6 +55,8 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "any": "cpp"
+        "any": "cpp",
+        "unordered_set": "cpp",
+        "fstream": "cpp"
     }
 }

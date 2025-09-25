@@ -31,3 +31,19 @@ void SlabDestroy(Slab* slab)
         free(slab);
     }
 }
+
+void* SlabAllocater(Slab* slab){
+    return NULL;
+}
+
+void SlabDeallocater(Slab* slab, void* ptr){
+    return;
+}
+
+bool SlabContains(Slab* slab, void* ptr){
+    return true;
+}
+
+enum StatusOfSlotsAvailable getStatus(Slab* slab){
+    return FULL;
+}
