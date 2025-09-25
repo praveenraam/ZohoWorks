@@ -24,7 +24,7 @@ typedef struct {
 
 } Slab;
 
-Slab* Slab_inint(size_t c_object_size ,size_t c_memoryArraySize);
+Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize);
 void SlabDestroy(Slab* slab);
 void* SlabAllocater(Slab* slab);
 void SlabDeallocater(Slab* slab, void* ptr);

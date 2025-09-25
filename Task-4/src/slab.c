@@ -1,6 +1,6 @@
 #include "./headers/slab.h"
 
-Slab* SlabCreate(size_t c_object_size ,size_t c_memoryArraySize) {
+Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize) {
     Slab* slab = (Slab*)malloc(sizeof(Slab));
 
     if(slab == NULL) {
