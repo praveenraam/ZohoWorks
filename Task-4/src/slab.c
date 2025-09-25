@@ -44,19 +44,19 @@ void* SlabAllocater(Slab* slab){
             if((char*)slab->FreeSlabIterPointer >= (char*)slab->MemoryArray + slab->totalMemorySizeOfArray){
                 return NULL;
             }
-            printf("stack is empty\n");
+            // printf("stack is empty\n");
             returnPtr = slab->FreeSlabIterPointer;
             slab->FreeSlabIterPointer = (char*)slab->FreeSlabIterPointer + slab->objectSize;
         }
         else{
-            printf("Stack is Not empty\n");
+            // printf("Stack is Not empty\n");
             returnPtr = StackPop(slab->ptrStackInSlab);
         }
 
         slab->usedMemorySizeOfArray = slab->usedMemorySizeOfArray + slab->objectSize;
         slab->status = slab->totalMemorySizeOfArray == slab->usedMemorySizeOfArray ? FULL : PARTIAL;
 
-        printf("Memory allocated\n");
+        // printf("Memory allocated\n");
         // call memory manager add
         return returnPtr;
     }
@@ -69,7 +69,7 @@ void SlabDeallocater(Slab* slab, void* ptr){
     if(fromMemory >= 0 && fromMemory < slab->totalMemorySizeOfArray){
 
         if(fromMemory % slab->objectSize != 0){
-            printf("Ptr is not pointing the proper memory address\n");
+            // printf("Ptr is not pointing the proper memory address\n");
             return;
         }
 
@@ -80,11 +80,11 @@ void SlabDeallocater(Slab* slab, void* ptr){
         slab->status = slab->usedMemorySizeOfArray == 0 ? EMPTY : PARTIAL;
 
         // call memory manager remove
-        printf("Memory Freed\n");
+        // printf("Memory Freed\n");
         return;
 
     }
-    printf("Ptr is out of bound\n");
+    // printf("Ptr is out of bound\n");
 }
 
 bool SlabContains(Slab* slab, void* ptr){

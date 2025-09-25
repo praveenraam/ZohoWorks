@@ -1,30 +1,50 @@
 #include "./src/headers/slab.h"
 #include "./src/headers/dll.h"
-#include<stdio.h>
+#include "./src/headers/slabcache.h"
 
-int main(){
+#include <stdio.h>
 
-    Slab* s1 = SlabInit(2,10);
-    Slab* s2 = SlabInit(1,10);
-    Slab* s3 = SlabInit(3,7);
-    Slab* s4 = SlabInit(4,10);
+int main() {
+    SlabCache* sc = SlabCacheInit(8);
 
-    DLL* header = DLL_Init(s1);
-    DLL* Tail = header;
-    Tail = DLL_InsertAtEnd(Tail,s2);
-    Tail = DLL_InsertAtEnd(Tail,s3);
-    Tail = DLL_InsertAtEnd(Tail,s4);
+    int allocation_size = 116;
     
-    DLL_print(header);
-    
-    Tail = Tail->prev;
-    DLL* End = Tail->next;
-    Tail->next = NULL;
-    DLL_Destroy(End);
+    void* ptrs[allocation_size];
 
-    DLL_print(header);
+    printf("Allocating %d objects:\n", allocation_size);
+    for (int i = 0; i < allocation_size; ++i) {
+        ptrs[i] = SlabCacheAllocate(sc);
+        printf("ptrs[%d] = %p\n", i, ptrs[i]);
+    }
 
-    DLL_DestroyAll(header);
-    
+    printf("\nPartial slabs after allocation:\n");
+    DLL_print(sc->headerForPartial);
 
+    printf("Full slabs after allocation:\n");
+    DLL_print(sc->headerForFull);
+
+    printf("\nFreeing every third object:\n");
+    for (int i = 0; i < allocation_size; i += 3) {
+        SlabCacheDeallocator(sc, ptrs[i]);
+        printf("Freed ptrs[%d] = %p\n", i, ptrs[i]);
+    }
+
+    printf("\nPartial slabs after freeing:\n");
+    DLL_print(sc->headerForPartial);
+    printf("Full slabs after freeing:\n");
+    DLL_print(sc->headerForFull);
+
+    printf("\nRe-allocating freed slots (not all):\n");
+    for (int i = 0; i < allocation_size / 2; i += 3) {
+        void* p = SlabCacheAllocate(sc);
+        printf("Re-allocated ptr = %p\n", p);
+    }
+
+    printf("\nPartial slabs after partial re-allocation:\n");
+    DLL_print(sc->headerForPartial);
+    printf("Full slabs after partial re-allocation:\n");
+    DLL_print(sc->headerForFull);
+
+    SlabCacheDestroy(sc);
+    return 0;
 }

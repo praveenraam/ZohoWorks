@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "dll.h": "c"
+        "dll.h": "c",
+        "slabcache.h": "c"
     }
 }
