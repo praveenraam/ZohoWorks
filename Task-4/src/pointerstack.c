@@ -13,6 +13,12 @@ PointerStack* StackInit()
     return stack;
 }
 
+void StackDestroy(PointerStack* stack){
+    if(stack != NULL){
+        free(stack);
+    }
+}
+
 bool StackPush(PointerStack* stack, void* item){
     if(stack->top >= STACK_CAPACITY - 1){
         return false;

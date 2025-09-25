@@ -11,6 +11,7 @@ typedef struct {
 } PointerStack;
 
 PointerStack* StackInit();
+void StackDestroy(PointerStack* stack);
 bool StackPush(PointerStack* stack, void* item);
 void* StackPop(PointerStack* stack);
 bool StackIsEmpty(PointerStack* stack);

@@ -1,6 +1,5 @@
 #pragma once
-#include <stdlib.h>
-#include <stdbool.h>
+#include "pointerstack.h"
 
 enum StatusOfSlotsAvailable{
     EMPTY,
@@ -19,7 +18,7 @@ typedef struct {
 
     enum StatusOfSlotsAvailable status;
 
-    // Stack implementation for deallocated Objects
+    PointerStack* ptrStackInSlab;    // Stack implementation for deallocated Objects
     // MemoryManage* cache_passed_memory_manager;
 
 } Slab;

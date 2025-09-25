@@ -1,28 +1,31 @@
 #include "./src/headers/slab.h"
-#include "./src/headers/pointerstack.h"
 
 #include <stdio.h>
 
 int main(){
 
-    PointerStack* stack = StackInit();
-    printf("%d ",StackIsEmpty(stack));
-    printf("%d ",StackIsFull(stack));
-    int no = 10;
-    void* newPtr = &no;
-    StackPush(stack,newPtr);
-    printf("%d ",StackIsEmpty(stack));
-    StackPop(stack);
-    printf("%d ",StackIsEmpty(stack));
+    Slab* slab = SlabInit(10,10);
+    printf("We have created a slab that contains a memory array of size : %ld\n",  slab->totalMemorySizeOfArray);
+    void* ptr[10];
 
     for(int iter=0;iter<10;iter++){
-        StackPush(stack,newPtr);
+        ptr[iter] = SlabAllocater(slab);
     }
-    printf("%d ",StackIsFull(stack));
 
     for(int iter=0;iter<10;iter++){
-        StackPop(stack);
+        printf("%p ",ptr[iter]);
     }
-    printf("%d ",StackIsFull(stack));
+    
+    SlabDeallocater(slab,ptr[2]);
 
+    ptr[2] = SlabAllocater(slab);
+
+    ptr[8]++;
+    SlabDeallocater(slab,ptr[8]--);
+    SlabDeallocater(slab,ptr[8]);
+    SlabDeallocater(slab,ptr[10]);
+    
+
+    printf("%d\n",getStatus(slab));
+    SlabDestroy(slab);
 }
