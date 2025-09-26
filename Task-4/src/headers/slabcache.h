@@ -1,5 +1,6 @@
 #pragma once
 #include "slab.h"
+#include <pthread.h>
 struct DLL;
 
 #include <stdbool.h>
@@ -13,7 +14,8 @@ typedef struct {
     struct DLL* headerForPartial;
     struct DLL* tailForPartial;
     size_t object_size;
-
+    
+    pthread_mutex_t cache_mutex;
     // Cache Manager 
 } SlabCache;
 

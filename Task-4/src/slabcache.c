@@ -16,23 +16,40 @@ SlabCache* SlabCacheInit(size_t c_object_size){
     cache->headerForPartial = NULL;
     cache->tailForPartial = NULL;
 
+    if (pthread_mutex_init(&cache->cache_mutex, NULL) != 0) {
+        free(cache);
+        return NULL;
+    }
+
     return cache;
 }
 
 void SlabCacheDestroy(SlabCache* cache){
     if(cache != NULL){
+        pthread_mutex_lock(&cache->cache_mutex);
+
         if(cache->headerForFull != NULL) DLL_DestroyAll(cache->headerForFull);
         if(cache->headerForPartial != NULL) DLL_DestroyAll(cache->headerForPartial);
+
+        pthread_mutex_unlock(&cache->cache_mutex);
+
+        pthread_mutex_destroy(&cache->cache_mutex);
         free(cache);
     }
 }
 
 void* SlabCacheAllocate(SlabCache* cache){
+    
+    if (cache == NULL) return NULL;
+    pthread_mutex_lock(&cache->cache_mutex);
 
     if(isDDL_ForPartialEmpty(cache)){
         Slab* newSlab = SlabInit(cache->object_size,10);
-        if (newSlab == NULL) return NULL;
-      
+        if (newSlab == NULL) {
+            pthread_mutex_unlock(&cache->cache_mutex);
+            return NULL;
+        }
+
         cache->headerForPartial = DLL_Init(newSlab);
         cache->tailForPartial = cache->headerForPartial;
     }
@@ -68,7 +85,9 @@ void* SlabCacheAllocate(SlabCache* cache){
             cache->tailForFull = DLL_InsertAtEnd_asDLL(cache->tailForFull,oldHeader);
             // DLL_Destroy(oldHeader);
         }
-}
+    }
+
+    pthread_mutex_unlock(&cache->cache_mutex);
     return allocatedPtr;
 
 }
@@ -76,11 +95,13 @@ void* SlabCacheAllocate(SlabCache* cache){
 void SlabCacheDeallocator(SlabCache* cache,void* ptr){
 
     if (cache == NULL || ptr == NULL) return;
+    pthread_mutex_lock(&cache->cache_mutex);
 
     DLL* current = cache->headerForPartial;
     while(current != NULL){
         if(SlabContains(current->slabInDLL,ptr)){
             SlabDeallocater(current->slabInDLL,ptr);
+            pthread_mutex_unlock(&cache->cache_mutex);
             return;
         }
         current = current->next;
@@ -115,10 +136,13 @@ void SlabCacheDeallocator(SlabCache* cache,void* ptr){
                     cache->headerForPartial = current;
                 }
             }
+            pthread_mutex_unlock(&cache->cache_mutex);
             return;
         }
         current = current->next;
     }
+    
+    pthread_mutex_unlock(&cache->cache_mutex);
 }
 
 bool isDDL_ForPartialEmpty(SlabCache* cache){
