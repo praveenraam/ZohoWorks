@@ -7,6 +7,8 @@ SlabAllocator* getInstanceOfSA() {
         if (instance != NULL) {
             instance->headerForCacheList = NULL;
             instance->tailForCacheList = NULL;
+
+            pthread_mutex_init(&instance->allocator_mutex, NULL);
         }
     }
     return instance;
@@ -15,6 +17,9 @@ SlabAllocator* getInstanceOfSA() {
 void* SA_Allocater(size_t object_size){
 
     SlabAllocator* instance = getInstanceOfSA();
+
+    pthread_mutex_lock(&instance->allocator_mutex);
+
     if(instance->headerForCacheList == NULL){
         SlabCache* cache = SlabCacheInit(object_size);
         instance->headerForCacheList = DLL_Init_SA(cache);
@@ -37,6 +42,8 @@ void* SA_Allocater(size_t object_size){
         instance->tailForCacheList = DLL_InsertAtEnd_SA(instance->tailForCacheList,cache);
     }
 
+    pthread_mutex_unlock(&instance->allocator_mutex);
+
     if (cache == NULL) {
         return NULL;
     }
@@ -49,7 +56,11 @@ void* SA_Allocater(size_t object_size){
 void SA_Deallocater(size_t object_size, void* ptr){
 
     SlabAllocator* instance = getInstanceOfSA();
+
+    pthread_mutex_lock(&instance->allocator_mutex);
+
     if(instance->headerForCacheList == NULL){
+        pthread_mutex_unlock(&instance->allocator_mutex);
         return;
     }
 
@@ -65,8 +76,10 @@ void SA_Deallocater(size_t object_size, void* ptr){
     }
 
     if(cache == NULL){
+        pthread_mutex_unlock(&instance->allocator_mutex);
         return;
     }
+    pthread_mutex_unlock(&instance->allocator_mutex);
 
     SlabCacheDeallocator(cache,ptr);
 
