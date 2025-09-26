@@ -65,8 +65,8 @@ void* SlabCacheAllocate(SlabCache* cache){
             oldHeader->prev = NULL;
         }
         else{
-            cache->tailForFull = DLL_InsertAtEnd(cache->tailForFull,oldHeader->slabInDLL);
-            DLL_Destroy(oldHeader);
+            cache->tailForFull = DLL_InsertAtEnd_asDLL(cache->tailForFull,oldHeader);
+            // DLL_Destroy(oldHeader);
         }
 }
     return allocatedPtr;

@@ -67,6 +67,20 @@ DLL* DLL_InsertAtEnd_SA(DLL* tail,SlabCache* slabCacheToAdd){
     return newOne; 
 }
 
+DLL* DLL_InsertAtEnd_asDLL(DLL* tail, DLL* DLL_toAdd) {
+    if (DLL_toAdd == NULL) return tail;
+    if (tail == NULL) {
+        DLL_toAdd->prev = NULL;
+        DLL_toAdd->next = NULL;
+        return DLL_toAdd;
+    }
+
+    tail->next = DLL_toAdd;
+    DLL_toAdd->prev = tail;
+    DLL_toAdd->next = NULL;
+    return DLL_toAdd;
+}
+
 void DLL_print(DLL* head_ptr) {
     DLL* current = head_ptr;
     while (current != NULL) {
