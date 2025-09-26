@@ -2,6 +2,8 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "dll.h": "c",
-        "slabcache.h": "c"
+        "slabcache.h": "c",
+        "slaballocator.h": "c",
+        "pointerstack.h": "c"
     }
 }

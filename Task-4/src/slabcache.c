@@ -1,3 +1,4 @@
+#include "./headers/dll.h"
 #include "./headers/slabcache.h"
 
 SlabCache* SlabCacheInit(size_t c_object_size){

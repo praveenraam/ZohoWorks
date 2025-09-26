@@ -7,11 +7,26 @@ DLL* DLL_Init(Slab* slab){
     if(returnPtr == NULL) return NULL;
     
     returnPtr->slabInDLL = slab;
+    returnPtr->slabCacheInDLL = NULL;
     returnPtr->next = NULL;
     returnPtr->prev = NULL; 
 
     return returnPtr;
 }
+
+DLL* DLL_Init_SA(SlabCache* slabCache){
+    DLL* returnPtr = (DLL*)malloc(sizeof(DLL));
+
+    if(returnPtr == NULL) return NULL;
+    
+    returnPtr->slabInDLL = NULL;
+    returnPtr->slabCacheInDLL = slabCache;
+    returnPtr->next = NULL;
+    returnPtr->prev = NULL; 
+
+    return returnPtr;
+}
+
 
 void DLL_Destroy(DLL* dll_to_destroy){
     if(dll_to_destroy == NULL) return;
@@ -39,6 +54,17 @@ DLL* DLL_InsertAtEnd(DLL* tail, Slab* slabToAdd) {
     tail->next = newOne;
     newOne->prev = tail;
     return newOne; // Return new tail and update in call like -- tail = insertAtEnd(tail, slabToAdd);
+}
+
+DLL* DLL_InsertAtEnd_SA(DLL* tail,SlabCache* slabCacheToAdd){
+    if (tail == NULL || slabCacheToAdd == NULL) return NULL;
+
+    DLL* newOne = DLL_Init_SA(slabCacheToAdd);
+    if (newOne == NULL) return tail;
+
+    tail->next = newOne;
+    newOne->prev = tail;
+    return newOne; 
 }
 
 void DLL_print(DLL* head_ptr) {

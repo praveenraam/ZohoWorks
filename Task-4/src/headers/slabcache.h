@@ -1,6 +1,6 @@
 #pragma once
 #include "slab.h"
-#include "dll.h"
+struct DLL;
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -8,10 +8,10 @@
 
 typedef struct {
 
-    DLL* headerForFull;
-    DLL* tailForFull;
-    DLL* headerForPartial;
-    DLL* tailForPartial;
+    struct DLL* headerForFull;
+    struct DLL* tailForFull;
+    struct DLL* headerForPartial;
+    struct DLL* tailForPartial;
     size_t object_size;
 
     // Cache Manager 
