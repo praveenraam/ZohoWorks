@@ -53,7 +53,7 @@ int main() {
     memset(ptr,'A',8);
     printf("Allocated: %p\n", ptr);
 
-    void* new_ptr = SlabReallocater(mySlab, ptr, 8, 12);
+    void* new_ptr = SA_Reallocater(ptr, 8, 12);
     if (!new_ptr) {
         printf("Failed: SlabReallocater returned NULL\n");
         return 1;

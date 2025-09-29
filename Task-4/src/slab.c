@@ -1,7 +1,5 @@
 #include "./headers/slab.h"
-#include "./headers/slaballocator.h"
 #include <stdio.h>
-#include <string.h>
 
 Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize) {
     Slab* slab = (Slab*)malloc(sizeof(Slab));
@@ -87,28 +85,6 @@ void SlabDeallocater(Slab* slab, void* ptr){
 
     }
     // printf("Ptr is out of bound\n");
-}
-
-void* SlabReallocater(Slab* slab, void* from_address, size_t current_size, size_t new_required_size)
-{
-    if(new_required_size == 0){
-        SA_Deallocater(current_size,from_address);
-        return NULL;
-    }
-
-    if(from_address == NULL){
-        return SA_Allocater(new_required_size);
-    }
-
-    void* new_address = SA_Allocater(new_required_size);
-
-    if(new_address == NULL) return NULL;
-
-    size_t copy_size = new_required_size < current_size ? new_required_size : current_size;
-    memcpy(new_address,from_address,copy_size);
-
-    SA_Deallocater(current_size,from_address);
-    return new_address;
 }
 
 bool SlabContains(Slab *slab, void *ptr)
