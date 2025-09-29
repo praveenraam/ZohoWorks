@@ -27,5 +27,6 @@ Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize);
 void SlabDestroy(Slab* slab);
 void* SlabAllocater(Slab* slab);
 void SlabDeallocater(Slab* slab, void* ptr);
+void* SlabReallocater(Slab* slab, void* from,size_t current_size,size_t new_required_size);
 bool SlabContains(Slab* slab, void* ptr);
 enum StatusOfSlotsAvailable getStatus(Slab* slab);
