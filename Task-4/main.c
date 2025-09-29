@@ -3,63 +3,46 @@
 
 #include <stdio.h>
 
+void* testFunc(void* args){
+
+    int count = 8;
+    int removeCount = 2;
+    int againAlloc = 2;
+
+    void* ptrs[8];
+
+    for(int iter=0;iter<count;iter++){
+        ptrs[iter] = SA_Allocater(10);
+        printf("Allocated : %p\n",ptrs[iter]);
+    }
+
+    for(int iter=0;iter<removeCount;iter++){
+        SA_Deallocater(10,ptrs[iter]);
+        printf("De Allocated : %p\n",ptrs[iter]);
+    }
+
+    for(int iter=0;iter<againAlloc;iter++){
+        ptrs[iter] = SA_Allocater(10);
+        printf("Again Allocated : %p\n",ptrs[iter]);
+    }  
+
+    return NULL;
+}
+
+
 int main() {
-    int object_size = 20;
-    int initial_allocation_size = 16;
-    void* ptrs[initial_allocation_size];
-
-    printf("Allocating %d objects of size %d:\n", initial_allocation_size, object_size);
-    for (int i = 0; i < initial_allocation_size; ++i) {
-        ptrs[i] = SA_Allocater(object_size);
-        printf("ptrs[%d] = %p\n", i, ptrs[i]);
-    }
     
-    printf("FULL : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForFull);
-    printf("Partial : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForPartial);
+    pthread_t threads[4];
 
-    printf("\nFreeing first 4 objects:\n");
-    for (int i = 0; i < 4; ++i) {
-        SA_Deallocater(object_size, ptrs[i]);
-        printf("Freed ptrs[%d] = %p\n", i, ptrs[i]);
-        ptrs[i] = NULL;
-    }
-
-    printf("FULL : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForFull);
-    printf("Partial : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForPartial);
-
-    int reallocation_size = 10;
-    void* new_ptrs[reallocation_size];
-
-    printf("\nRe-allocating %d new objects of size %d:\n", reallocation_size, object_size);
-    for (int i = 0; i < reallocation_size; ++i) {
-        new_ptrs[i] = SA_Allocater(object_size);
-        printf("new_ptrs[%d] = %p\n", i, new_ptrs[i]);
-    }
-
-    printf("FULL : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForFull);
-    printf("Partial : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForPartial);
-    printf("\nAll allocated pointers after re-allocation:\n");
-
-    for (int i = 0; i < initial_allocation_size; ++i) {
-        if (ptrs[i] != NULL) {
-            printf("ptrs[%d] = %p\n", i, ptrs[i]);
+    for(int iter=0;iter<4;iter++){
+        if(pthread_create(&threads[iter],NULL,testFunc,NULL) != 0){
+            printf("Error");
+            return 1;
         }
     }
 
-    for (int i = 0; i < reallocation_size; ++i) {
-        printf("new_ptrs[%d] = %p\n", i, new_ptrs[i]);
+    for(int iter=0;iter<4;iter++){
+        pthread_join(threads[iter],NULL);
     }
 
-    printf("FULL : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForFull);
-    printf("Partial : ");
-    DLL_print(getInstanceOfSA()->headerForCacheList->slabCacheInDLL->headerForPartial);
-
-    return 0;
 }
