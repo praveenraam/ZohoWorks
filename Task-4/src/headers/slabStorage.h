@@ -23,9 +23,9 @@ typedef struct {
 
 } SlabStorage;
 
-SlabStorage* SlabInit(size_t c_object_size ,size_t c_memoryArraySize);
-void SlabDestroy(SlabStorage* slab);
-void* SlabAllocater(SlabStorage* slab);
-void SlabDeallocater(SlabStorage* slab, void* ptr);
-bool SlabContains(SlabStorage* slab, void* ptr);
+SlabStorage* SlabStorageInit(size_t c_object_size ,size_t c_memoryArraySize);
+void SlabStorageDestroy(SlabStorage* slab);
+void* SlabStorageAllocater(SlabStorage* slab);
+void SlabStorageDeallocater(SlabStorage* slab, void* ptr);
+bool SlabStorageContains(SlabStorage* slab, void* ptr);
 enum StatusOfSlotsAvailable getStatus(SlabStorage* slab);

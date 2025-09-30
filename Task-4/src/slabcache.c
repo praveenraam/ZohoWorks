@@ -44,7 +44,7 @@ void* SlabCacheAllocate(SlabCache* cache){
     pthread_mutex_lock(&cache->cache_mutex);
 
     if(isDDL_ForPartialEmpty(cache)){
-        SlabStorage* newSlab = SlabInit(cache->object_size,10);
+        SlabStorage* newSlab = SlabStorageInit(cache->object_size,10);
         if (newSlab == NULL) {
             pthread_mutex_unlock(&cache->cache_mutex);
             return NULL;
@@ -54,7 +54,7 @@ void* SlabCacheAllocate(SlabCache* cache){
         cache->tailForPartial = cache->headerForPartial;
     }
 
-    void* allocatedPtr = SlabAllocater(cache->headerForPartial->slabInDLL);
+    void* allocatedPtr = SlabStorageAllocater(cache->headerForPartial->slabInDLL);
 
     if (allocatedPtr == NULL) {
         return NULL;
@@ -99,8 +99,8 @@ void SlabCacheDeallocator(SlabCache* cache,void* ptr){
 
     DLL* current = cache->headerForPartial;
     while(current != NULL){
-        if(SlabContains(current->slabInDLL,ptr)){
-            SlabDeallocater(current->slabInDLL,ptr);
+        if(SlabStorageContains(current->slabInDLL,ptr)){
+            SlabStorageDeallocater(current->slabInDLL,ptr);
             pthread_mutex_unlock(&cache->cache_mutex);
             return;
         }
@@ -109,8 +109,8 @@ void SlabCacheDeallocator(SlabCache* cache,void* ptr){
 
     current = cache->headerForFull;
     while(current != NULL){
-        if (SlabContains(current->slabInDLL, ptr)) {
-            SlabDeallocater(current->slabInDLL, ptr);
+        if (SlabStorageContains(current->slabInDLL, ptr)) {
+            SlabStorageDeallocater(current->slabInDLL, ptr);
 
             if (getStatus(current->slabInDLL) != FULL) {
 

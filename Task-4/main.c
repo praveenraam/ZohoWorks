@@ -33,22 +33,22 @@ void* testFunc(void* args){
 
 int main() {
     
-    // pthread_t threads[4];
+    pthread_t threads[4];
 
-    // for(int iter=0;iter<4;iter++){
-    //     if(pthread_create(&threads[iter],NULL,testFunc,NULL) != 0){
-    //         printf("Error");
-    //         return 1;
-    //     }
-    // }
+    for(int iter=0;iter<4;iter++){
+        if(pthread_create(&threads[iter],NULL,testFunc,NULL) != 0){
+            printf("Error");
+            return 1;
+        }
+    }
 
-    // for(int iter=0;iter<4;iter++){
-    //     pthread_join(threads[iter],NULL);
-    // }
+    for(int iter=0;iter<4;iter++){
+        pthread_join(threads[iter],NULL);
+    }
 
     
-    SlabStorage* mySlab = SlabInit(8,10);
-    void* ptr = SlabAllocater(mySlab);
+    SlabStorage* mySlab = SlabStorageInit(8,10);
+    void* ptr = SlabStorageAllocater(mySlab);
 
     memset(ptr,'A',8);
     printf("Allocated: %p\n", ptr);
