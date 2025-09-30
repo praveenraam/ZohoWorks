@@ -1,8 +1,8 @@
-#include "./headers/slab.h"
+#include "./headers/slabStorage.h"
 #include <stdio.h>
 
-Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize) {
-    Slab* slab = (Slab*)malloc(sizeof(Slab));
+SlabStorage* SlabInit(size_t c_object_size ,size_t c_memoryArraySize) {
+    SlabStorage* slab = (SlabStorage*)malloc(sizeof(SlabStorage));
 
     if(slab == NULL) {
         return NULL;
@@ -26,7 +26,7 @@ Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize) {
     return slab;
 }
 
-void SlabDestroy(Slab* slab)
+void SlabDestroy(SlabStorage* slab)
 {
     if(slab != NULL){
         free(slab->MemoryArray);
@@ -35,7 +35,7 @@ void SlabDestroy(Slab* slab)
     }
 }
 
-void* SlabAllocater(Slab* slab){
+void* SlabAllocater(SlabStorage* slab){
 
     if(slab->status != FULL){
         void* returnPtr;
@@ -63,7 +63,7 @@ void* SlabAllocater(Slab* slab){
     return NULL;
 }
 
-void SlabDeallocater(Slab* slab, void* ptr){
+void SlabDeallocater(SlabStorage* slab, void* ptr){
     int fromMemory = (char*)ptr - (char*)slab->MemoryArray;
 
     if(fromMemory >= 0 && fromMemory < slab->totalMemorySizeOfArray){
@@ -87,12 +87,12 @@ void SlabDeallocater(Slab* slab, void* ptr){
     // printf("Ptr is out of bound\n");
 }
 
-bool SlabContains(Slab *slab, void *ptr)
+bool SlabContains(SlabStorage *slab, void *ptr)
 {
     int fromMemory = (char*)ptr - (char*)slab->MemoryArray;
     return fromMemory >= 0 && fromMemory < slab->totalMemorySizeOfArray;
 }
 
-enum StatusOfSlotsAvailable getStatus(Slab* slab){
+enum StatusOfSlotsAvailable getStatus(SlabStorage* slab){
     return slab->status;
 }

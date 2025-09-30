@@ -1,6 +1,6 @@
 #include "./src/headers/slaballocator.h"
 #include "./src/headers/dll.h"
-#include "./src/headers/slab.h"
+#include "./src/headers/slabStorage.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -47,7 +47,7 @@ int main() {
     // }
 
     
-    Slab* mySlab = SlabInit(8,10);
+    SlabStorage* mySlab = SlabInit(8,10);
     void* ptr = SlabAllocater(mySlab);
 
     memset(ptr,'A',8);

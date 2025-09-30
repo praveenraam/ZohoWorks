@@ -4,6 +4,7 @@
         "dll.h": "c",
         "slabcache.h": "c",
         "slaballocator.h": "c",
-        "pointerstack.h": "c"
+        "pointerstack.h": "c",
+        "slabstorage.h": "c"
     }
 }

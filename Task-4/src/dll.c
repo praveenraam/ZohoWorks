@@ -1,7 +1,7 @@
 
 #include "./headers/dll.h"
 
-DLL* DLL_Init(Slab* slab){
+DLL* DLL_Init(SlabStorage* slab){
     DLL* returnPtr = (DLL*)malloc(sizeof(DLL));
 
     if(returnPtr == NULL) return NULL;
@@ -45,7 +45,7 @@ void DLL_DestroyAll(DLL* head_ptr){
 
 }
 
-DLL* DLL_InsertAtEnd(DLL* tail, Slab* slabToAdd) {
+DLL* DLL_InsertAtEnd(DLL* tail, SlabStorage* slabToAdd) {
     if (tail == NULL) return NULL;
 
     DLL* newOne = DLL_Init(slabToAdd);

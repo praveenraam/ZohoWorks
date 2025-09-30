@@ -21,11 +21,11 @@ typedef struct {
     PointerStack* ptrStackInSlab;    // Stack implementation for deallocated Objects
     // MemoryManage* cache_passed_memory_manager;
 
-} Slab;
+} SlabStorage;
 
-Slab* SlabInit(size_t c_object_size ,size_t c_memoryArraySize);
-void SlabDestroy(Slab* slab);
-void* SlabAllocater(Slab* slab);
-void SlabDeallocater(Slab* slab, void* ptr);
-bool SlabContains(Slab* slab, void* ptr);
-enum StatusOfSlotsAvailable getStatus(Slab* slab);
+SlabStorage* SlabInit(size_t c_object_size ,size_t c_memoryArraySize);
+void SlabDestroy(SlabStorage* slab);
+void* SlabAllocater(SlabStorage* slab);
+void SlabDeallocater(SlabStorage* slab, void* ptr);
+bool SlabContains(SlabStorage* slab, void* ptr);
+enum StatusOfSlotsAvailable getStatus(SlabStorage* slab);

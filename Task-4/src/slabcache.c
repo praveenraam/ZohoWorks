@@ -44,7 +44,7 @@ void* SlabCacheAllocate(SlabCache* cache){
     pthread_mutex_lock(&cache->cache_mutex);
 
     if(isDDL_ForPartialEmpty(cache)){
-        Slab* newSlab = SlabInit(cache->object_size,10);
+        SlabStorage* newSlab = SlabInit(cache->object_size,10);
         if (newSlab == NULL) {
             pthread_mutex_unlock(&cache->cache_mutex);
             return NULL;
