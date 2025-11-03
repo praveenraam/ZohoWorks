@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -c
-SRC = main.c src/dll.c src/slab.c src/pointerstack.c src/slabcache.c src/slaballocator.c
+SRC = main.c src/dll.c src/my_slab.c src/pointerstack.c src/slabcache.c src/slaballocator.c
 OBJ = $(SRC:.c=.o)
 EXEC = my_program
 

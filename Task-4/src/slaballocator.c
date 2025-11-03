@@ -1,18 +1,19 @@
 #include "./headers/slaballocator.h"
 #include <string.h>
 
-SlabAllocator* getInstanceOfSA() {
-    static SlabAllocator* instance = NULL;
-    if (instance == NULL) {
-        instance = (SlabAllocator*)malloc(sizeof(SlabAllocator));
-        if (instance != NULL) {
-            instance->headerForCacheList = NULL;
-            instance->tailForCacheList = NULL;
+static SlabAllocator* gInstance = NULL;
 
-            pthread_mutex_init(&instance->allocator_mutex, NULL);
+SlabAllocator* getInstanceOfSA() {
+    if (gInstance == NULL) {
+        gInstance = (SlabAllocator*)malloc(sizeof(SlabAllocator));
+        if (gInstance != NULL) {
+            gInstance->headerForCacheList = NULL;
+            gInstance->tailForCacheList = NULL;
+
+            pthread_mutex_init(&gInstance->allocator_mutex, NULL);
         }
     }
-    return instance;
+    return gInstance;
 }
 
 void* SA_Allocater(size_t object_size){
@@ -106,4 +107,48 @@ void* SA_Reallocater(void* from_address, size_t current_size, size_t new_require
 
     SA_Deallocater(current_size,from_address);
     return new_address;
+}
+
+void SA_Reset(){
+    SlabAllocator* instance = getInstanceOfSA();
+
+    pthread_mutex_lock(&instance->allocator_mutex);
+
+    if(instance->headerForCacheList == NULL){
+        pthread_mutex_unlock(&instance->allocator_mutex);
+        return;
+    }
+
+    SlabCache* cache = NULL;
+    DLL* current = instance->headerForCacheList;
+    while(current != NULL){
+        SlabCacheDestroy(current->slabCacheInDLL);
+        DLL* nextCache = current->next;
+        current = NULL;
+        current = nextCache;
+    }
+}
+
+void SA_DeleteContext(){
+    if (gInstance == NULL) {
+        return;
+    }
+
+    SA_Reset();
+
+    pthread_mutex_destroy(&gInstance->allocator_mutex);
+    free(gInstance);
+    gInstance = NULL;
+}
+
+bool SA_isEmpty(){
+    SlabAllocator* instance = getInstanceOfSA();
+
+    pthread_mutex_lock(&instance->allocator_mutex);
+
+    bool is_empty = (instance->headerForCacheList == NULL);
+
+    pthread_mutex_unlock(&instance->allocator_mutex);
+
+    return is_empty;
 }
